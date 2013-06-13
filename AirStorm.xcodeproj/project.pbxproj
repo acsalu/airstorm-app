@@ -44,6 +44,7 @@
 		901A4D7B1768E3F7008AF9EF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 901A4D7A1768E3F7008AF9EF /* MBProgressHUD.m */; };
 		904038A61768F98800097262 /* transparentImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 904038A51768F98800097262 /* transparentImage.png */; };
 		904038A81768FBC500097262 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 904038A71768FBC500097262 /* Media.xcassets */; };
+		9060326B17697430005A0E49 /* ASVideoPlayingController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9060326A17697430005A0E49 /* ASVideoPlayingController.m */; };
 		9065CF1C1768CFF9008864FF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9065CF1B1768CFF9008864FF /* Parse.framework */; };
 		90E40F761768D08300C40049 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E40F751768D08300C40049 /* AudioToolbox.framework */; };
 		90E40F781768D08900C40049 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E40F771768D08900C40049 /* CFNetwork.framework */; };
@@ -120,6 +121,8 @@
 		904038A41768F47800097262 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		904038A51768F98800097262 /* transparentImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = transparentImage.png; sourceTree = "<group>"; };
 		904038A71768FBC500097262 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = "AirStorm-test/Media.xcassets"; sourceTree = "<group>"; };
+		9060326917697430005A0E49 /* ASVideoPlayingController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASVideoPlayingController.h; sourceTree = "<group>"; };
+		9060326A17697430005A0E49 /* ASVideoPlayingController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVideoPlayingController.m; sourceTree = "<group>"; };
 		9065CF1B1768CFF9008864FF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		90E40F751768D08300C40049 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		90E40F771768D08900C40049 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -249,6 +252,8 @@
 				8ADAC4511504BC61008B5F2A /* ASMarkerDetectionViewController.mm */,
 				90E40F891768DBBB00C40049 /* ASVideoSelectionViewController.h */,
 				90E40F8A1768DBBB00C40049 /* ASVideoSelectionViewController.m */,
+				9060326917697430005A0E49 /* ASVideoPlayingController.h */,
+				9060326A17697430005A0E49 /* ASVideoPlayingController.m */,
 				901A4D761768E3DA008AF9EF /* ASVideoTableViewCell.h */,
 				901A4D771768E3DA008AF9EF /* ASVideoTableViewCell.m */,
 				8ADAC43F1504BC61008B5F2A /* Supporting Files */,
@@ -391,6 +396,7 @@
 				901A4D731768E358008AF9EF /* AFURLConnectionOperation.m in Sources */,
 				901A4D781768E3DA008AF9EF /* ASVideoTableViewCell.m in Sources */,
 				8ADAC46D1504CA1A008B5F2A /* VideoSource.mm in Sources */,
+				9060326B17697430005A0E49 /* ASVideoPlayingController.m in Sources */,
 				901A4D6D1768E358008AF9EF /* AFHTTPClient.m in Sources */,
 				8A279D1F150E3F88005F4854 /* MarkerDetector.mm in Sources */,
 				901A4D6F1768E358008AF9EF /* AFImageRequestOperation.m in Sources */,

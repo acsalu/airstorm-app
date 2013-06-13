@@ -17,6 +17,7 @@
 #import "MarkerDetector.h"
 #import "SimpleVisualizationController.h"
 #import "ASVideoSelectionViewController.h"
+#import "ASVideoPlayingController.h"
 #import <Parse/Parse.h>
 
 @interface ASMarkerDetectionViewController() <VideoSourceDelegate>
@@ -103,13 +104,16 @@
                 if (objects.count == 0) [self performSegueWithIdentifier:@"VideoSelection" sender:self];
                 else {
                     NSLog(@"videoId: %@", objects[0][@"videoId"]);
-                    UIWebView *webView = [[UIWebView alloc] initWithFrame:_glview.frame];
-                    [self.view addSubview:webView];
-                    NSString *urlString = [NSString stringWithFormat:@"http://www.youtube.com/watch?v=%@", objects[0][@"videoId"]];
-                    NSURL *url = [NSURL URLWithString:urlString];
-                    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//                    UIWebView *webView = [[UIWebView alloc] initWithFrame:_glview.frame];
+//                    [self.view addSubview:webView];
+//                    NSString *urlString = [NSString stringWithFormat:@"http://www.youtube.com/watch?v=%@", objects[0][@"videoId"]];
+//                    NSURL *url = [NSURL URLWithString:urlString];
+//                    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+//                    
+//                    [webView loadRequest:request];
+                    _videoId = objects[0][@"videoId"];
+                    [self performSegueWithIdentifier:@"VideoPlaying" sender:self];
                     
-                    [webView loadRequest:request];
                 }
                 _isFetching = NO;
             } else {
@@ -145,6 +149,10 @@
         vc.markerId = _markerId;
         vc.latitude = _location.coordinate.latitude;
         vc.longitude = _location.coordinate.longitude;
+    } else if ([segue.identifier isEqualToString:@"VideoPlaying"]) {
+        ASVideoPlayingController *vc = (ASVideoPlayingController *) segue.destinationViewController;
+        vc.videoId = _videoId;
+        vc.markerId = _markerId;
     }
 }
 

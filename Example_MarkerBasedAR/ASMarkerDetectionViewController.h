@@ -22,6 +22,7 @@
 @property (strong, nonatomic) CLLocationManager *locationManager;
 @property (strong, nonatomic) CLLocation *location;
 @property (nonatomic) int markerId;
+@property (strong, nonatomic) NSString *videoId;
 @property (nonatomic) BOOL isFetching;
 
 - (void)detectMarkerWithId:(int)id;
