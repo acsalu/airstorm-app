@@ -45,7 +45,6 @@
 		9028E3BD1775C2BB002C2AB1 /* ASInputSourceSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9028E3BC1775C2BB002C2AB1 /* ASInputSourceSelectionView.m */; };
 		9028E3CA1775E50C002C2AB1 /* ASPhotoSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9028E3C91775E50C002C2AB1 /* ASPhotoSelectionViewController.m */; };
 		903832D91776C11900BCE0D1 /* ASData.m in Sources */ = {isa = PBXBuildFile; fileRef = 903832D81776C11900BCE0D1 /* ASData.m */; };
-		903832DC1776EA0F00BCE0D1 /* ASCameraButtonCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 903832DB1776EA0F00BCE0D1 /* ASCameraButtonCollectionViewCell.m */; };
 		903832E11776F81500BCE0D1 /* ASVideoPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 903832E01776F81500BCE0D1 /* ASVideoPlayingViewController.m */; };
 		903832E41776FC8A00BCE0D1 /* ASImageSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 903832E31776FC8A00BCE0D1 /* ASImageSearchViewController.m */; };
 		903F4CD51775EF1D0020D1E9 /* ASCameraOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 903F4CD31775EF1D0020D1E9 /* ASCameraOverlayViewController.m */; };
@@ -135,8 +134,6 @@
 		9028E3C91775E50C002C2AB1 /* ASPhotoSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASPhotoSelectionViewController.m; sourceTree = "<group>"; };
 		903832D71776C11900BCE0D1 /* ASData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASData.h; sourceTree = "<group>"; };
 		903832D81776C11900BCE0D1 /* ASData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASData.m; sourceTree = "<group>"; };
-		903832DA1776EA0F00BCE0D1 /* ASCameraButtonCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASCameraButtonCollectionViewCell.h; sourceTree = "<group>"; };
-		903832DB1776EA0F00BCE0D1 /* ASCameraButtonCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASCameraButtonCollectionViewCell.m; sourceTree = "<group>"; };
 		903832DF1776F81500BCE0D1 /* ASVideoPlayingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASVideoPlayingViewController.h; sourceTree = "<group>"; };
 		903832E01776F81500BCE0D1 /* ASVideoPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVideoPlayingViewController.m; sourceTree = "<group>"; };
 		903832E21776FC8A00BCE0D1 /* ASImageSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASImageSearchViewController.h; sourceTree = "<group>"; };
@@ -363,8 +360,6 @@
 				903F4CDE1776A9B70020D1E9 /* ASPhotoDecideViewController.m */,
 				903F4CD7177607D70020D1E9 /* ASPhotoCollectionViewCell.h */,
 				903F4CD8177607D70020D1E9 /* ASPhotoCollectionViewCell.m */,
-				903832DA1776EA0F00BCE0D1 /* ASCameraButtonCollectionViewCell.h */,
-				903832DB1776EA0F00BCE0D1 /* ASCameraButtonCollectionViewCell.m */,
 			);
 			name = PhotoSelection;
 			sourceTree = "<group>";
@@ -466,7 +461,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				903832DC1776EA0F00BCE0D1 /* ASCameraButtonCollectionViewCell.m in Sources */,
 				8ADAC4451504BC61008B5F2A /* main.m in Sources */,
 				8ADAC4491504BC61008B5F2A /* AppDelegate.m in Sources */,
 				903F4CDF1776A9B70020D1E9 /* ASPhotoDecideViewController.m in Sources */,

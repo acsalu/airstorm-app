@@ -9,6 +9,7 @@
 #import "ASPhotoDecideViewController.h"
 #import "ASData.h"
 #import "MBProgressHUD.h"
+#import "AFNetworking.h"
 #import <Parse/Parse.h>
 
 @interface ASPhotoDecideViewController ()
@@ -34,8 +35,32 @@
     
     self.navigationItem.rightBarButtonItem = chooseButton;
     
-    NSLog(@"%@", _image);
-    _imageView.image = _image;
+    if (_type == WEB) {
+        dispatch_async( dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0 ), ^(void)
+        {
+            NSData * data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[ASData sharedData].imageURL]];
+            UIImage * image = [[UIImage alloc] initWithData:data];
+            dispatch_async( dispatch_get_main_queue(), ^(void){
+               if( image != nil )
+               {
+                   CGRect bounds;
+                   
+                   bounds.origin = CGPointZero;
+                   bounds.size = image.size;
+                   
+                   _imageView.bounds = bounds;
+                   _imageView.image = image;
+                   
+               } else {
+                   
+               }
+            });
+        });
+//        [_imageView setImageWithURL:[NSURL URLWithString:[ASData sharedData].imageURL]];
+    } else {
+        NSLog(@"%@", _image);
+        _imageView.image = _image;
+    }
 }
                                  
 - (void)choosePhoto

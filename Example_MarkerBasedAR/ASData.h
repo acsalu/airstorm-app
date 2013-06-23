@@ -13,6 +13,8 @@
 
 @property (nonatomic) int markerId;
 @property (strong, nonatomic) CLLocation *location;
+@property (strong, nonatomic) NSString *videoId;
+@property (strong, nonatomic) NSString *imageURL;
 
 + (ASData *)sharedData;
 

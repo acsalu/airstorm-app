@@ -9,6 +9,7 @@
 #import "ASImageSearchViewController.h"
 #import "ASPhotoCollectionViewCell.h"
 #import "ASPhotoDecideViewController.h"
+#import "ASData.h"
 #import "AFNetworking.h"
 
 NSString *const FlickrAPIKey = @"43837ea27d9b418da418f0616b74bdd7";
@@ -44,7 +45,7 @@ NSString *const FlickrAPIKey = @"43837ea27d9b418da418f0616b74bdd7";
     
     NSString *urlString =
     [NSString stringWithFormat:
-     @"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&tags=%@&page=%d&per_page=25&format=json&nojsoncallback=1",
+     @"http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=%@&text=%@&page=%d&per_page=25&format=json&nojsoncallback=1",
      FlickrAPIKey, keyword, _page];
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSLog(@"[Image Search] Request URL: %@", urlString);
@@ -67,10 +68,12 @@ NSString *const FlickrAPIKey = @"43837ea27d9b418da418f0616b74bdd7";
                                                              photo[@"farm"], photo[@"server"], photo[@"id"], photo[@"secret"]];
                                                             
                                                             NSString *photoURLString =
-                                                            [NSString stringWithFormat:@"http://farm%@.static.flickr.com/%@/%@_%@_m.jpg",
+                                                            [NSString stringWithFormat:@"http://farm%@.static.flickr.com/%@/%@_%@_z.jpg",
                                                              photo[@"farm"], photo[@"server"], photo[@"id"], photo[@"secret"]];
                                                             
-                                                            NSDictionary *info = @{@"title":title, @"thumbnailURL":thumbnailURLString, @"photoURL":photoURLString};
+                                                            NSLog(@"%@", photoURLString);
+                                                            
+                                                            NSDictionary *info = @{@"title":title, @"thumbnailURL":thumbnailURLString, @"imageURL":photoURLString};
                                                             [self.imageInfos addObject:info];
                                                         }
                                                         
@@ -123,7 +126,8 @@ NSString *const FlickrAPIKey = @"43837ea27d9b418da418f0616b74bdd7";
     if (indexPath.row == self.imageInfos.count) {
         [self searchImageForKeyword:_currentKeyword];
     } else {
-        
+        [ASData sharedData].imageURL = _imageInfos[indexPath.row][@"imageURL"];
+        [self performSegueWithIdentifier:@"DecideImage" sender:self];
     }
 }
 
@@ -132,9 +136,9 @@ NSString *const FlickrAPIKey = @"43837ea27d9b418da418f0616b74bdd7";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@""]) {
+    if ([segue.identifier isEqualToString:@"DecideImage"]) {
         ASPhotoDecideViewController *vc = (ASPhotoDecideViewController *) segue.destinationViewController;
-        
+        vc.type = WEB;
     }
 }
 

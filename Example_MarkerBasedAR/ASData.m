@@ -16,6 +16,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         if (!data) data = [[ASData alloc] init];
+        data.markerId = -1;
     });
     return data;
 }
