@@ -18,6 +18,7 @@
 #import "SimpleVisualizationController.h"
 #import "ASVideoSelectionViewController.h"
 #import "ASVideoPlayingController.h"
+#import "ASData.h"
 #import <Parse/Parse.h>
 
 @interface ASMarkerDetectionViewController() <VideoSourceDelegate>
@@ -94,6 +95,7 @@
     if (!_isFetching) {
         _isFetching = YES;
         NSLog(@"detect marker with id %d", id);
+        [ASData sharedData].markerId = id;
         _markerId = id;
         PFQuery *query = [PFQuery queryWithClassName:@"PlayBack"];
         
@@ -159,7 +161,10 @@
 #pragma mark - CLLocationManagerDelegate methods
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    if (locations.count > 0) _location = locations[0];
+    if (locations.count > 0) {
+        _location = locations[0];
+        [ASData sharedData].location = locations[0];
+    }
 }
 
 @end
