@@ -1,0 +1,38 @@
+//
+//  ASVideoPlayingViewController.m
+//  AirStorm
+//
+//  Created by Acsa Lu on 6/23/13.
+//
+//
+
+#import "ASVideoPlayingViewController.h"
+
+@interface ASVideoPlayingViewController ()
+
+@end
+
+@implementation ASVideoPlayingViewController
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+	// Do any additional setup after loading the view.
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+@end

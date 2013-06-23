@@ -11,7 +11,7 @@
 
 @class ASCameraOverlayViewController;
 
-@interface ASPhotoSelectionViewController:UIViewController<UICollectionViewDataSource, UICollectionViewDelegate>
+@interface ASPhotoSelectionViewController:UIViewController<UICollectionViewDataSource, UICollectionViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) UIImagePickerController *picker;
@@ -22,6 +22,7 @@
 @property (strong, nonatomic) ALAssetsLibrary *assetsLibrary;
 @property (strong, nonatomic) NSMutableArray *assets;
 @property (strong, nonatomic) ALAsset *assetSelected;
+@property (strong, nonatomic) UIImage *photoTook;
 
 - (void)takePhotoFromCamera;
 - (void)selectPhotoFromLibrary;

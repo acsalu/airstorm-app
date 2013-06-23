@@ -58,41 +58,28 @@
     [_assetsLibrary enumerateGroupsWithTypes:groupTypes usingBlock:blkListGroup failureBlock:nil];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+//    [self.navigationController setNavigationBarHidden:YES animated:animated];
+    [super viewWillAppear:animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+//    [self.navigationController setNavigationBarHidden:NO animated:animated];
+    [super viewWillDisappear:animated];
+}
+
 
 - (void)launchCamera
 {
  
     _picker = [[UIImagePickerController alloc] init];
-    _picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-//    _picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-//    _picker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
-//    _picker.showsCameraControls = NO;
-//    _picker.navigationBarHidden = YES;
-//    _picker.toolbarHidden = YES;
-//    _picker.wantsFullScreenLayout = YES;
+    _picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    _picker.cameraDevice = UIImagePickerControllerCameraDeviceRear;
+    _picker.delegate = self;
     
-    _overlay = [[ASCameraOverlayViewController alloc] initWithNibName:@"ASCameraOverlayViewController" bundle:nil];
-    
-    _overlay.picker = _picker;
-//    _picker.cameraOverlayView = _overlay.view;
-    
-    [self presentViewController:_picker animated:NO completion:NULL];
-}
-
-- (void)viewWillLayoutSubviews
-{
-    [super viewWillLayoutSubviews];
-}
-
-- (IBAction)takePhoto:(id)sender
-{
-
-}
-
-- (IBAction)choosePhoto:(id)sender {
-}
-- (IBAction)launchCameraButtonPressed:(id)sender {
-    [self launchCamera];
+    [self presentViewController:_picker animated:YES completion:NULL];
 }
 
 #pragma mark - UICollectionViewDataSource methods
@@ -111,17 +98,34 @@
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     ASPhotoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
-    cell.imageView.image = [UIImage imageWithCGImage:((ALAsset *)_assets[_assets.count - indexPath.row - 1]).thumbnail];
+    if (indexPath.row == 0)
+        cell.imageView.image = [UIImage imageNamed:@"camera-button-normal"];
+    else
+        cell.imageView.image = [UIImage imageWithCGImage:((ALAsset *)_assets[_assets.count - indexPath.row]).thumbnail];
     
     return cell;
 }
 
-#pragma mark -UICollectionViewDelegate methods
+#pragma mark - UICollectionViewDelegate methods
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    _assetSelected = _assets[_assets.count - indexPath.row - 1];
-    [self performSegueWithIdentifier:@"DecidePhoto" sender:self];
+    if (indexPath.row == 0) {
+        [self launchCamera];
+    } else {
+        _assetSelected = _assets[_assets.count - indexPath.row];
+        [self performSegueWithIdentifier:@"DecidePhoto" sender:self];
+    }
+}
+
+#pragma mark - UIImagePickerControllerDelegate methods
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+    _photoTook = [info objectForKey:UIImagePickerControllerOriginalImage];
+    NSLog(@"%.0f x %.0f", _photoTook.size.height, _photoTook.size.width);
+    [self performSegueWithIdentifier:@"TookPhoto" sender:self];
 }
 
 #pragma mark - StoryBoard methods
@@ -133,14 +137,16 @@
         
         UIImageOrientation orientation = UIImageOrientationUp;
         
-        NSNumber* orientationValue = [_assetSelected    valueForProperty:@"ALAssetPropertyOrientation"];
+        NSNumber* orientationValue = [_assetSelected valueForProperty:@"ALAssetPropertyOrientation"];
         if (orientationValue != nil) {
             orientation = [orientationValue intValue];
         }
         
         vc.image = [UIImage imageWithCGImage:_assetSelected.defaultRepresentation.fullResolutionImage scale:1.0f orientation:orientation];
+    } else if ([segue.identifier isEqualToString:@"TookPhoto"]) {
+        ASPhotoDecideViewController *vc = (ASPhotoDecideViewController *) segue.destinationViewController;
+        vc.image = _photoTook;
     }
 }
-
 
 @end
