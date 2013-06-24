@@ -75,15 +75,16 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
     [_searchBar endEditing:YES];
     
     NSString *query = searchBar.text;
-    NSLog(@"Search for keyword: %@", query);
+    NSLog(@"[Video Search] Search video for keyword: %@", query);
     _videos = [NSMutableArray arrayWithCapacity:5];
     
     NSString *urlString = [NSString stringWithFormat:YT_API_URL, query, API_KEY];
-    urlString = [urlString stringByReplacingOccurrencesOfString:@" " withString:@"+"];
+    urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    NSLog(@"Search url: %@", url);
+    NSLog(@"[Video Search] Request url: %@", url);
     
     AFJSONRequestOperation *operation =
     [AFJSONRequestOperation JSONRequestOperationWithRequest:request
