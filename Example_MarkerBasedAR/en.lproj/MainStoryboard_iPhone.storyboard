@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4457.6" systemVersion="13A476u" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4457.6" systemVersion="13A476u" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="0W8-pu-MzL">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3682.6"/>
@@ -47,7 +47,7 @@
             <objects>
                 <viewController title="Video Selection" id="zdo-hO-ks1" customClass="ASVideoSelectionViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3Nz-kX-Clq">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" text="" placeholder="What are you looking for?" id="t9Y-eM-CKz">
@@ -58,27 +58,27 @@
                                     <outlet property="delegate" destination="zdo-hO-ks1" id="wYS-UQ-tKg"/>
                                 </connections>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="246" sectionHeaderHeight="22" sectionFooterHeight="22" id="KJL-fO-H0h">
-                                <rect key="frame" x="0.0" y="44" width="334" height="524"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="203" sectionHeaderHeight="22" sectionFooterHeight="22" id="KJL-fO-H0h">
+                                <rect key="frame" x="-7" y="44" width="334" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="246" id="wia-mC-SSJ" customClass="ASVideoTableViewCell">
-                                        <rect key="frame" x="0.0" y="22" width="334" height="246"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" rowHeight="203" id="wia-mC-SSJ" customClass="ASVideoTableViewCell">
+                                        <rect key="frame" x="0.0" y="22" width="334" height="203"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="301" height="245"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="301" height="202"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Dhd-FI-6jS">
-                                                    <rect key="frame" x="11" y="0.0" width="297" height="21"/>
+                                                    <rect key="frame" x="20" y="5" width="281" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="jQi-ev-OvT">
-                                                    <rect key="frame" x="11" y="27" width="297" height="207"/>
+                                                    <rect key="frame" x="20" y="29" width="288" height="162"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                             </subviews>
@@ -100,7 +100,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Search Video" id="3jQ-Lc-WF5"/>
+                    <navigationItem key="navigationItem" title="Youtube Video" id="3jQ-Lc-WF5"/>
                     <connections>
                         <outlet property="searchBar" destination="t9Y-eM-CKz" id="JLG-Zq-SAT"/>
                         <outlet property="tableView" destination="KJL-fO-H0h" id="mhS-ve-o9A"/>
@@ -115,7 +115,7 @@
             <objects>
                 <viewController id="Jll-ZA-7AO" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="AFO-mI-Hj7">
-                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -126,7 +126,7 @@
             </objects>
             <point key="canvasLocation" x="4854" y="149"/>
         </scene>
-        <!--Image Search View Controller - Search Image-->
+        <!--Image Search View Controller - Online Image-->
         <scene sceneID="ktI-7A-PcZ">
             <objects>
                 <viewController id="lRR-17-bJt" customClass="ASImageSearchViewController" sceneMemberID="viewController">
@@ -181,7 +181,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Search Image" id="VeV-5O-Q1F"/>
+                    <navigationItem key="navigationItem" title="Online Image" id="VeV-5O-Q1F"/>
                     <connections>
                         <outlet property="collectionView" destination="Dyz-n2-hq5" id="CgS-aY-3e0"/>
                         <outlet property="searchBar" destination="Cbd-2W-aCr" id="328-fv-N1C"/>
@@ -192,7 +192,7 @@
             </objects>
             <point key="canvasLocation" x="4364" y="-525"/>
         </scene>
-        <!--Photo Selection View Controller - Select Photo-->
+        <!--Photo Selection View Controller - Camera Roll-->
         <scene sceneID="LJR-nm-R8a">
             <objects>
                 <viewController id="Z0i-qx-m31" customClass="ASPhotoSelectionViewController" sceneMemberID="viewController">
@@ -239,7 +239,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Select Photo" id="xis-Gr-iZa"/>
+                    <navigationItem key="navigationItem" title="Camera Roll" id="xis-Gr-iZa"/>
                     <connections>
                         <outlet property="collectionView" destination="Evy-GC-QUJ" id="kUO-dD-Uf0"/>
                         <segue destination="HBx-cJ-sdS" kind="push" identifier="DecidePhoto" id="TFf-ca-SKC"/>
@@ -250,7 +250,7 @@
             </objects>
             <point key="canvasLocation" x="4325" y="-1223"/>
         </scene>
-        <!--Photo Decide View Controller - Are You Sure?-->
+        <!--Photo Decide View Controller-->
         <scene sceneID="xG7-z7-j5q">
             <objects>
                 <viewController id="HBx-cJ-sdS" customClass="ASPhotoDecideViewController" sceneMemberID="viewController">
@@ -266,7 +266,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Are You Sure?" id="59t-Pa-gqE"/>
+                    <navigationItem key="navigationItem" id="59t-Pa-gqE"/>
                     <connections>
                         <outlet property="imageView" destination="ZKG-ym-QLJ" id="wVo-dk-jyw"/>
                     </connections>
@@ -335,12 +335,12 @@
             </objects>
             <point key="canvasLocation" x="2942" y="909"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Camera Roll-->
         <scene sceneID="rJh-6O-XgQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="75h-Gk-uoQ" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Item" id="eze-Hp-A0B"/>
+                    <tabBarItem key="tabBarItem" title="Camera Roll" image="CameraRollIcon" id="eze-Hp-A0B"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xS1-Lu-2bh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -376,12 +376,12 @@
             </objects>
             <point key="canvasLocation" x="2942" y="-525"/>
         </scene>
-        <!--Navigation Controller - Video-->
+        <!--Navigation Controller - Youtube Video-->
         <scene sceneID="qEz-nz-cSJ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ta7-Pl-CwP" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Video" image="VideoIcon" id="35f-uH-obe"/>
+                    <tabBarItem key="tabBarItem" title="Youtube Video" image="YoutubeIcon" id="35f-uH-obe"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="GGs-q5-1oY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -396,12 +396,12 @@
             </objects>
             <point key="canvasLocation" x="3833" y="149"/>
         </scene>
-        <!--Navigation Controller - Item-->
+        <!--Navigation Controller - Online Image-->
         <scene sceneID="g7f-tC-K2L">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fs9-m3-upf" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Item" id="8Id-0f-E9a"/>
+                    <tabBarItem key="tabBarItem" title="Online Image" image="ImageSearchIcon" id="8Id-0f-E9a"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="UQz-fL-kfl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -418,15 +418,86 @@
         </scene>
     </scenes>
     <resources>
-        <image name="VideoIcon" width="32" height="32"/>
+        <image name="CameraRollIcon" width="32" height="32"/>
+        <image name="ImageSearchIcon" width="32" height="32"/>
+        <image name="YoutubeIcon" width="32" height="32"/>
     </resources>
+    <classes>
+        <class className="ASImageSearchViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ASImageSearchViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+            </relationships>
+        </class>
+        <class className="ASMarkerDetectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ASMarkerDetectionViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="glview" candidateClass="EAGLView"/>
+            </relationships>
+        </class>
+        <class className="ASPhotoCollectionViewCell" superclassName="UICollectionViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ASPhotoCollectionViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ASPhotoDecideViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ASPhotoDecideViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ASPhotoSelectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ASPhotoSelectionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="launchCameraButtonPressed:"/>
+                <relationship kind="outlet" name="collectionView" candidateClass="UICollectionView"/>
+                <relationship kind="outlet" name="imageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ASVideoPlayingController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ASVideoPlayingController.h"/>
+            <relationships>
+                <relationship kind="action" name="back:"/>
+                <relationship kind="action" name="reassign:"/>
+                <relationship kind="outlet" name="webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="ASVideoSelectionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ASVideoSelectionViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ASVideoTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ASVideoTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="thumbnail" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="title" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="EAGLView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EAGLView.h"/>
+        </class>
+        <class className="UICollectionReusableView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionReusableView.h"/>
+        </class>
+        <class className="UICollectionViewCell" superclassName="UICollectionReusableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewCell.h"/>
+        </class>
+        <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="c2x-4e-7tu"/>
-        <segue reference="4Xn-zd-4ZF"/>
+        <segue reference="ZFj-K3-AwN"/>
+        <segue reference="TFf-ca-SKC"/>
     </inferredMetricsTieBreakers>
 </document>

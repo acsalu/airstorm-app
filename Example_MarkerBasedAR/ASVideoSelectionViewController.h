@@ -8,15 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ASVideoSelectionViewController : UIViewController
+@interface ASVideoSelectionViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic) int markerId;
 @property (nonatomic) double longitude;
 @property (nonatomic) double latitude;
+@property (nonatomic) BOOL isEditing;
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSMutableArray *videos;
+
 
 @end

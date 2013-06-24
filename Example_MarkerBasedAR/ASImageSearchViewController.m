@@ -26,6 +26,18 @@ NSString *const FlickrAPIKey = @"43837ea27d9b418da418f0616b74bdd7";
     
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
     self.navigationItem.leftBarButtonItem = cancelButton;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
+}
+
+- (void)dismissKeyboard
+{
+    if (_isEditing) {
+        [_searchBar endEditing:YES];
+        [_searchBar setShowsCancelButton:NO animated:YES];
+        _isEditing = NO;
+    }
 }
 
 - (void)cancel
@@ -101,10 +113,26 @@ NSString *const FlickrAPIKey = @"43837ea27d9b418da418f0616b74bdd7";
 
 #pragma mark - UISearchBarDelegate methods
 
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    [searchBar setShowsCancelButton:YES animated:YES];
+    _isEditing = YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar endEditing:YES];
+    _isEditing = NO;
+}
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [_searchBar endEditing:YES];
+    [searchBar endEditing:YES];
+    _isEditing = NO;
+    
+    [searchBar setShowsCancelButton:NO animated:YES];
     [self searchImageForKeyword:searchBar.text];
+    
 }
 
 #pragma mark - UICollectionViewDataSource methods

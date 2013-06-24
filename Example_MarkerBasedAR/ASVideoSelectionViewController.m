@@ -17,7 +17,7 @@
 #define CELL_IMG_TAG 100
 #define CELL_TITLE_TAG 101
 
-NSString *YT_API_URL = @"https://www.googleapis.com/youtube/v3/search?q=%@&key=%@&part=snippet";
+NSString *YT_API_URL = @"https://www.googleapis.com/youtube/v3/search?q=%@&key=%@&part=snippet&maxResults=25";
 NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
 
 @interface ASVideoSelectionViewController ()
@@ -32,8 +32,19 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
     
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
     self.navigationItem.leftBarButtonItem = cancelButton;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:tap];
 }
 
+- (void)dismissKeyboard
+{
+    if (_isEditing) {
+        [_searchBar endEditing:YES];
+        [_searchBar setShowsCancelButton:NO animated:YES];
+        _isEditing = NO;
+    }
+}
 - (void)cancel
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -70,9 +81,25 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
 
 # pragma mark - UISearchBarDelegate methods
 
+- (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
+{
+    [searchBar setShowsCancelButton:YES animated:YES];
+    _isEditing = YES;
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar endEditing:YES];
+    _isEditing = NO;
+}
+
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [_searchBar endEditing:YES];
+    _isEditing = NO;
+    
+    [searchBar setShowsCancelButton:NO animated:YES];
+    
     
     NSString *query = searchBar.text;
     NSLog(@"[Video Search] Search video for keyword: %@", query);
@@ -91,20 +118,20 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
                                                     success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
                                                         NSLog(@"kind: %@", [JSON valueForKey:@"kind"]);
                                                         for (NSDictionary *videoInfo in [JSON valueForKey:@"items"]) {
+                                                            if ([videoInfo[@"id"][@"kind"] isEqualToString:@"youtube#video"]) {
                                                             
-                                                            NSString *title = videoInfo[@"snippet"][@"title"];
-                                                            NSString *videoId = videoInfo[@"id"][@"videoId"];
-                                                            NSString *thumbnailUrl = videoInfo[@"snippet"][@"thumbnails"][@"medium"][@"url"];
+                                                                NSString *title = videoInfo[@"snippet"][@"title"];
+                                                                NSString *videoId = videoInfo[@"id"][@"videoId"];
+                                                                NSString *thumbnailUrl = videoInfo[@"snippet"][@"thumbnails"][@"medium"][@"url"];
+                                                                
+                                                                NSLog(@"videoId: %@", videoInfo[@"id"][@"videoId"]);
+                                                                NSLog(@"thumbnailUrl: %@", videoInfo[@"snippet"][@"thumbnails"][@"medium"][@"url"]);
+                                                                
+                                                                [_videos addObject:@{@"title":title, @"videoId":videoId, @"thumbnailUrl":thumbnailUrl}];
                                                             
-                                                            NSLog(@"videoId: %@", videoInfo[@"id"][@"videoId"]);
-                                                            NSLog(@"thumbnailUrl: %@", videoInfo[@"snippet"][@"thumbnails"][@"medium"][@"url"]);
-                                                            
-                                                            if (!title || !videoId || !thumbnailUrl) {
-                                                                NSLog(@"videoInfo: %@", videoInfo);
-                                                                break;
                                                             }
                                                             
-                                                            [_videos addObject:@{@"title":title, @"videoId":videoId, @"thumbnailUrl":thumbnailUrl}];
+                                                            
                                                         }
                                                         
                                                         [_tableView reloadData];
@@ -149,6 +176,11 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
 }
 
 # pragma mark - UITableViewDelegate methods
+
+- (void)tableView:(UITableView *)tableView willDisplayFooterView:(UIView *)view forSection:(NSInteger)section
+{
+    NSLog(@"reload!!");
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
