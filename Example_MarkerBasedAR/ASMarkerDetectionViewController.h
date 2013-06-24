@@ -25,6 +25,9 @@
 @property (strong, nonatomic) NSString *videoId;
 @property (nonatomic) BOOL isFetching;
 
+@property (weak, nonatomic) IBOutlet UIImageView *detectionOverlay;
+@property (weak, nonatomic) IBOutlet UIImageView *detectedOverlay;
+
 - (void)detectMarkerWithId:(int)id;
 
 @end

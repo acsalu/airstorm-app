@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ASDisplayMediaViewController : UIViewController
+@class  LBYouTubePlayerViewController;
+@protocol LBYouTubePlayerControllerDelegate;
+
+@interface ASDisplayMediaViewController : UIViewController <LBYouTubePlayerControllerDelegate>
+
+@property (strong, nonatomic) LBYouTubePlayerViewController *player;
+@property (strong, nonatomic) UIImageView *imageView;
 
 @end

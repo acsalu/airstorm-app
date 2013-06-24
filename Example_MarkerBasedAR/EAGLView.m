@@ -121,7 +121,7 @@
             glDeleteRenderbuffers(1, &depthRenderbuffer);
             depthRenderbuffer = 0;
         }
-        NSLog(@"Framebuffer deleted");
+//        NSLog(@"Framebuffer deleted");
         
     }
 }

@@ -9,7 +9,6 @@
 #import "ASVideoPlayingViewController.h"
 #import "ASData.h"
 #import "HCYoutubeParser.h"
-#import "VideoPlayerKit.h"
 #import "MBProgressHUD.h"
 #import "LBYouTube.h"
 #import <Parse/Parse.h>
@@ -40,7 +39,7 @@
     [playBackObject setObject:@([ASData sharedData].markerId) forKey:@"markerId"];
     [playBackObject setObject:[ASData sharedData].videoId forKey:@"videoId"];
     [playBackObject setObject:[PFGeoPoint geoPointWithLocation:[ASData sharedData].location] forKey:@"location"];
-    [playBackObject setObject:@"type" forKey:@"video"];
+    [playBackObject setObject:ASMediaTypeVideo forKey:@"type"];
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     

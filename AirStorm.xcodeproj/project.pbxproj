@@ -42,13 +42,10 @@
 		901A4D751768E358008AF9EF /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 901A4D6C1768E358008AF9EF /* UIImageView+AFNetworking.m */; };
 		901A4D781768E3DA008AF9EF /* ASVideoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 901A4D771768E3DA008AF9EF /* ASVideoTableViewCell.m */; };
 		901A4D7B1768E3F7008AF9EF /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 901A4D7A1768E3F7008AF9EF /* MBProgressHUD.m */; };
-		9028E3BD1775C2BB002C2AB1 /* ASInputSourceSelectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9028E3BC1775C2BB002C2AB1 /* ASInputSourceSelectionView.m */; };
 		9028E3CA1775E50C002C2AB1 /* ASPhotoSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9028E3C91775E50C002C2AB1 /* ASPhotoSelectionViewController.m */; };
 		903832D91776C11900BCE0D1 /* ASData.m in Sources */ = {isa = PBXBuildFile; fileRef = 903832D81776C11900BCE0D1 /* ASData.m */; };
 		903832E11776F81500BCE0D1 /* ASVideoPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 903832E01776F81500BCE0D1 /* ASVideoPlayingViewController.m */; };
 		903832E41776FC8A00BCE0D1 /* ASImageSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 903832E31776FC8A00BCE0D1 /* ASImageSearchViewController.m */; };
-		903F4CD51775EF1D0020D1E9 /* ASCameraOverlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 903F4CD31775EF1D0020D1E9 /* ASCameraOverlayViewController.m */; };
-		903F4CD61775EF1D0020D1E9 /* ASCameraOverlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 903F4CD41775EF1D0020D1E9 /* ASCameraOverlayViewController.xib */; };
 		903F4CDB17760D6E0020D1E9 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 903F4CDA17760D6E0020D1E9 /* AssetsLibrary.framework */; };
 		903F4CDC177613EA0020D1E9 /* ASPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 903F4CD8177607D70020D1E9 /* ASPhotoCollectionViewCell.m */; };
 		903F4CDF1776A9B70020D1E9 /* ASPhotoDecideViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 903F4CDE1776A9B70020D1E9 /* ASPhotoDecideViewController.m */; };
@@ -133,8 +130,6 @@
 		901A4D771768E3DA008AF9EF /* ASVideoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVideoTableViewCell.m; sourceTree = "<group>"; };
 		901A4D791768E3F7008AF9EF /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		901A4D7A1768E3F7008AF9EF /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		9028E3BB1775C2BB002C2AB1 /* ASInputSourceSelectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASInputSourceSelectionView.h; sourceTree = "<group>"; };
-		9028E3BC1775C2BB002C2AB1 /* ASInputSourceSelectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASInputSourceSelectionView.m; sourceTree = "<group>"; };
 		9028E3C81775E50C002C2AB1 /* ASPhotoSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASPhotoSelectionViewController.h; sourceTree = "<group>"; };
 		9028E3C91775E50C002C2AB1 /* ASPhotoSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASPhotoSelectionViewController.m; sourceTree = "<group>"; };
 		903832D71776C11900BCE0D1 /* ASData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASData.h; sourceTree = "<group>"; };
@@ -143,9 +138,6 @@
 		903832E01776F81500BCE0D1 /* ASVideoPlayingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVideoPlayingViewController.m; sourceTree = "<group>"; };
 		903832E21776FC8A00BCE0D1 /* ASImageSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASImageSearchViewController.h; sourceTree = "<group>"; };
 		903832E31776FC8A00BCE0D1 /* ASImageSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASImageSearchViewController.m; sourceTree = "<group>"; };
-		903F4CD21775EF1D0020D1E9 /* ASCameraOverlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ASCameraOverlayViewController.h; path = ../ASCameraOverlayViewController.h; sourceTree = "<group>"; };
-		903F4CD31775EF1D0020D1E9 /* ASCameraOverlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ASCameraOverlayViewController.m; path = ../ASCameraOverlayViewController.m; sourceTree = "<group>"; };
-		903F4CD41775EF1D0020D1E9 /* ASCameraOverlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ASCameraOverlayViewController.xib; path = ../ASCameraOverlayViewController.xib; sourceTree = "<group>"; };
 		903F4CD7177607D70020D1E9 /* ASPhotoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ASPhotoCollectionViewCell.h; sourceTree = "<group>"; };
 		903F4CD8177607D70020D1E9 /* ASPhotoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ASPhotoCollectionViewCell.m; sourceTree = "<group>"; };
 		903F4CDA17760D6E0020D1E9 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -308,13 +300,6 @@
 				903832DD1776EA1A00BCE0D1 /* PhotoSelection */,
 				9060326917697430005A0E49 /* ASVideoPlayingController.h */,
 				9060326A17697430005A0E49 /* ASVideoPlayingController.m */,
-				901A4D761768E3DA008AF9EF /* ASVideoTableViewCell.h */,
-				901A4D771768E3DA008AF9EF /* ASVideoTableViewCell.m */,
-				903F4CD21775EF1D0020D1E9 /* ASCameraOverlayViewController.h */,
-				903F4CD31775EF1D0020D1E9 /* ASCameraOverlayViewController.m */,
-				903F4CD41775EF1D0020D1E9 /* ASCameraOverlayViewController.xib */,
-				9028E3BB1775C2BB002C2AB1 /* ASInputSourceSelectionView.h */,
-				9028E3BC1775C2BB002C2AB1 /* ASInputSourceSelectionView.m */,
 				8ADAC43F1504BC61008B5F2A /* Supporting Files */,
 				8A20518F1510A6E300E80270 /* GeometryTypes.hpp */,
 				8AFB8A411518CA1D00A42DEE /* GeometryTypes.cpp */,
@@ -390,6 +375,8 @@
 			children = (
 				90E40F891768DBBB00C40049 /* ASVideoSelectionViewController.h */,
 				90E40F8A1768DBBB00C40049 /* ASVideoSelectionViewController.m */,
+				901A4D761768E3DA008AF9EF /* ASVideoTableViewCell.h */,
+				901A4D771768E3DA008AF9EF /* ASVideoTableViewCell.m */,
 				903832DF1776F81500BCE0D1 /* ASVideoPlayingViewController.h */,
 				903832E01776F81500BCE0D1 /* ASVideoPlayingViewController.m */,
 			);
@@ -489,7 +476,6 @@
 			files = (
 				904038A61768F98800097262 /* transparentImage.png in Resources */,
 				8ADAC4431504BC61008B5F2A /* InfoPlist.strings in Resources */,
-				903F4CD61775EF1D0020D1E9 /* ASCameraOverlayViewController.xib in Resources */,
 				9010351C1769691100787E8E /* AirStorm-test-Info.plist in Resources */,
 				8ADAC44C1504BC61008B5F2A /* MainStoryboard_iPhone.storyboard in Resources */,
 				904038A81768FBC500097262 /* Media.xcassets in Resources */,
@@ -529,12 +515,10 @@
 				8AFB8A421518CA1D00A42DEE /* GeometryTypes.cpp in Sources */,
 				903832E11776F81500BCE0D1 /* ASVideoPlayingViewController.m in Sources */,
 				901A4D741768E358008AF9EF /* AFXMLRequestOperation.m in Sources */,
-				903F4CD51775EF1D0020D1E9 /* ASCameraOverlayViewController.m in Sources */,
 				90E5ABDE177820A000AB720B /* HCYoutubeParser.m in Sources */,
 				90E40F8B1768DBBB00C40049 /* ASVideoSelectionViewController.m in Sources */,
 				901A4D701768E358008AF9EF /* AFJSONRequestOperation.m in Sources */,
 				90E5ABD917781DEA00AB720B /* ASDisplayMediaViewController.m in Sources */,
-				9028E3BD1775C2BB002C2AB1 /* ASInputSourceSelectionView.m in Sources */,
 				901A4D751768E358008AF9EF /* UIImageView+AFNetworking.m in Sources */,
 				903832E41776FC8A00BCE0D1 /* ASImageSearchViewController.m in Sources */,
 				903F4CDC177613EA0020D1E9 /* ASPhotoCollectionViewCell.m in Sources */,

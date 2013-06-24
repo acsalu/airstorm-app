@@ -17,7 +17,7 @@
 #import "MarkerDetector.h"
 #import "SimpleVisualizationController.h"
 #import "ASVideoSelectionViewController.h"
-#import "ASVideoPlayingController.h"
+#import "ASDisplayMediaViewController.h"
 #import "ASData.h"
 #import <Parse/Parse.h>
 
@@ -52,6 +52,8 @@
     
     self.markerDetector = new MarkerDetector([self.videoSource getCalibration], self);
     [self.videoSource startWithDevicePosition:AVCaptureDevicePositionBack];
+    
+    self.isFetching = NO;
 }
 
 - (void)viewDidUnload
@@ -65,6 +67,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+//    NSLog(@"view will appear");
     [self.glview initContext];
     
     CGSize frameSize = [self.videoSource getFrameSize];
@@ -73,8 +76,16 @@
     self.visualizationController = [[SimpleVisualizationController alloc] initWithGLView:self.glview
                                                                              calibration:camCalib
                                                                                frameSize:frameSize];
+    self.isFetching = NO;
     
     [super viewWillAppear:animated];
+}
+
+- (void)setIsFetching:(BOOL)isFetching
+{
+    self.detectedOverlay.hidden = !isFetching;
+    self.detectionOverlay.hidden = isFetching;
+    _isFetching = isFetching;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -95,8 +106,8 @@
 - (void)detectMarkerWithId:(int)id
 {
     if (!_isFetching) {
-        _isFetching = YES;
-        NSLog(@"detect marker with id %d", id);
+        self.isFetching = YES;
+        NSLog(@"[Marker Detection] Detect marker with id %d", id);
         [ASData sharedData].markerId = id;
         _markerId = id;
         PFQuery *query = [PFQuery queryWithClassName:@"PlayBack"];
@@ -107,8 +118,6 @@
             if (!error) {
                 if (objects.count == 0) [self performSegueWithIdentifier:@"AssignMedia" sender:self];
                 else {
-                    NSLog(@"videoId: %@", objects[0][@"videoId"]);
-                    
                     PFGeoPoint *objectLocation = (PFGeoPoint *) objects[0][@"location"];
                     NSLog(@"[Marker Detection] Distance from object %.2f km",
                           [objectLocation distanceInKilometersTo:[PFGeoPoint geoPointWithLocation:[ASData sharedData].location]]);
@@ -116,12 +125,27 @@
                         [objectLocation distanceInKilometersTo:[PFGeoPoint geoPointWithLocation:[ASData sharedData].location]] > THRESHOLD_DISTANCE) {
                         [self performSegueWithIdentifier:@"AssignMedia" sender:self];
                     } else {
-                        _videoId = objects[0][@"videoId"];
-                        [self performSegueWithIdentifier:@"VideoPlaying" sender:self];
+                        NSDictionary *object = objects[0];
+                        NSString *mediaType = object[@"type"];
+                        
+                        NSLog(@"[Marker Detection] Media type: %@", mediaType);
+                        
+                        if ([mediaType isEqualToString:ASMediaTypeVideo]) {
+                            [ASData sharedData].videoId = object[@"videoId"];
+                            
+                        } else if ([mediaType isEqualToString:ASMediaTypeImage]) {
+                            [ASData sharedData].imageURL = object[@"imageURL"];
+                            
+                        } else {
+                            [ASData sharedData].imageURL = ((PFFile *) object[@"photoFile"]).url;
+                        }
+                        
+                        [ASData sharedData].mediaType = mediaType;
+                        
+                        [self performSegueWithIdentifier:@"DisplayMedia" sender:self];
                     }
                     
                 }
-                _isFetching = NO;
             } else {
                 NSLog(@"Error: %@", error);
             }
@@ -156,10 +180,9 @@
         vc.latitude = _location.coordinate.latitude;
         vc.longitude = _location.coordinate.longitude;
         [vc.tabBarController setSelectedIndex:1];
-    } else if ([segue.identifier isEqualToString:@"VideoPlaying"]) {
-        ASVideoPlayingController *vc = (ASVideoPlayingController *) segue.destinationViewController;
-        vc.videoId = _videoId;
-        vc.markerId = _markerId;
+    } else if ([segue.identifier isEqualToString:@"DisplayMedia"]) {
+        ASDisplayMediaViewController *vc = (ASDisplayMediaViewController *) segue.destinationViewController;
+        vc.navigationItem.title = [NSString stringWithFormat:@"Marker #%d", [ASData sharedData].markerId];
     }
 }
 
@@ -167,10 +190,13 @@
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    if (locations.count > 0) {
+    if (![ASData sharedData].location) {
         _location = locations[0];
         [ASData sharedData].location = locations[0];
+        [manager stopUpdatingLocation];
     }
 }
+
+
 
 @end

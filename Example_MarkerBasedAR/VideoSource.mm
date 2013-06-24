@@ -35,12 +35,12 @@
         if ([capSession canSetSessionPreset:AVCaptureSessionPreset640x480])
         {
             [capSession setSessionPreset:AVCaptureSessionPreset640x480];
-            NSLog(@"Set capture session preset AVCaptureSessionPreset640x480");
+//            NSLog(@"Set capture session preset AVCaptureSessionPreset640x480");
         }
         else if ([capSession canSetSessionPreset:AVCaptureSessionPresetLow])
         {
             [capSession setSessionPreset:AVCaptureSessionPresetLow];
-            NSLog(@"Set capture session preset AVCaptureSessionPresetLow");
+//            NSLog(@"Set capture session preset AVCaptureSessionPresetLow");
         }
         
         self.captureSession = capSession;

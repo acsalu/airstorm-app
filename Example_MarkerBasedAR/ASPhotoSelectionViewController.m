@@ -7,7 +7,7 @@
 //
 
 #import "ASPhotoSelectionViewController.h"
-#import "ASCameraOverlayViewController.h"
+#import "ASData.h"
 #import "ASPhotoCollectionViewCell.h"
 #import "ASPhotoDecideViewController.h"
 
@@ -121,6 +121,7 @@
     } else {
         _assetSelected = _assets[_assets.count - indexPath.row];
         [self performSegueWithIdentifier:@"DecidePhoto" sender:self];
+        [ASData sharedData].mediaType = ASMediaTypePhoto;
     }
 }
 

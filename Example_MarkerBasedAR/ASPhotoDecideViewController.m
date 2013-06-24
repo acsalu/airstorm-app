@@ -35,7 +35,7 @@
     
     self.navigationItem.rightBarButtonItem = chooseButton;
     
-    if (_type == WEB) {
+    if ([[ASData sharedData].mediaType isEqualToString:ASMediaTypeImage]) {
         dispatch_async( dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0 ), ^(void)
         {
             NSData * data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:[ASData sharedData].imageURL]];
@@ -56,7 +56,6 @@
                }
             });
         });
-//        [_imageView setImageWithURL:[NSURL URLWithString:[ASData sharedData].imageURL]];
     } else {
         NSLog(@"%@", _image);
         _imageView.image = _image;
@@ -65,34 +64,58 @@
                                  
 - (void)choosePhoto
 {
-    NSLog(@"Choose Photo");
-    NSData *imageData = UIImageJPEGRepresentation(_image, 1.0);
-    PFFile *imageFile = [PFFile fileWithName:@"image.jpg" data:imageData];
+   
     
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            PFObject *userPhoto = [PFObject objectWithClassName:@"PlayBack"];
-            PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLocation:[ASData sharedData].location];
-            [userPhoto setObject:@"type" forKey:@"photo"];
-            [userPhoto setObject:@([ASData sharedData].markerId) forKey:@"markerId"];
-            [userPhoto setObject:imageFile forKey:@"photoFile"];
-            [userPhoto setObject:geoPoint forKey:@"location"];
-            
-            
-            [userPhoto saveEventually:^(BOOL succeeded, NSError *error) {
-                if (succeeded) {
-                    NSLog(@"save succeeded");
-                    [MBProgressHUD hideHUDForView:self.view animated:YES];
-                    [self dismissViewControllerAnimated:YES completion:nil];
-                } else {
-                    NSLog(@"save failed");
-                }
-            }];
-        } else {
-            NSLog(@"save failed");
-        }
-    }];
+    
+    if ([[ASData sharedData].mediaType isEqualToString:ASMediaTypePhoto]) {
+        
+        NSData *photoData = UIImageJPEGRepresentation(_image, 0.7);
+        PFFile *photoFile = [PFFile fileWithName:@"photo.jpg" data:photoData];
+        [photoFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                PFObject *userPhoto = [PFObject objectWithClassName:@"PlayBack"];
+                PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLocation:[ASData sharedData].location];
+                
+                [userPhoto setObject:@([ASData sharedData].markerId) forKey:@"markerId"];
+                [userPhoto setObject:[ASData sharedData].mediaType forKey:@"type"];
+                [userPhoto setObject:photoFile forKey:@"photoFile"];
+                [userPhoto setObject:geoPoint forKey:@"location"];
+                
+                
+                [userPhoto saveEventually:^(BOOL succeeded, NSError *error) {
+                    if (succeeded) {
+                        NSLog(@"save succeeded");
+                        [MBProgressHUD hideHUDForView:self.view animated:YES];
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                    } else {
+                        NSLog(@"save failed");
+                    }
+                }];
+            } else {
+                NSLog(@"save failed");
+            }
+        }];
+    } else {
+        PFObject *webImage = [PFObject objectWithClassName:@"PlayBack"];
+        PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLocation:[ASData sharedData].location];
+        
+        [webImage setObject:@([ASData sharedData].markerId) forKey:@"markerId"];
+        [webImage setObject:[ASData sharedData].mediaType forKey:@"type"];
+        [webImage setObject:[ASData sharedData].imageURL forKey:@"imageURL"];
+        [webImage setObject:geoPoint forKey:@"location"];
+        
+        
+        [webImage saveEventually:^(BOOL succeeded, NSError *error) {
+            if (succeeded) {
+                NSLog(@"save succeeded");
+                [MBProgressHUD hideHUDForView:self.view animated:YES];
+                [self dismissViewControllerAnimated:YES completion:nil];
+            } else {
+                NSLog(@"save failed");
+            }
+        }];
+    }
     
     
 }

@@ -8,6 +8,10 @@
 
 #import "ASData.h"
 
+NSString * const ASMediaTypeVideo = @"video";
+NSString * const ASMediaTypePhoto = @"photo";
+NSString * const ASMediaTypeImage = @"image";
+
 @implementation ASData
 
 + (ASData *)sharedData

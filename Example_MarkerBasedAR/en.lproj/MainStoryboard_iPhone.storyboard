@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4457.6" systemVersion="13A476u" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="0W8-pu-MzL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4457.6" systemVersion="13A476u" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="FoN-LE-wA4">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3682.6"/>
     </dependencies>
     <scenes>
-        <!--Marker Detection View Controller - Marker Detection-->
+        <!--Marker Detection View Controller - Detection-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="ASMarkerDetectionViewController" sceneMemberID="viewController">
@@ -13,6 +13,11 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" id="U9w-dX-tSz">
+                                <rect key="frame" x="5" y="47" width="310" height="410"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" id="GB3-g5-JQt" customClass="EAGLView">
                                 <rect key="frame" x="10" y="52" width="300" height="400"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES"/>
@@ -22,21 +27,56 @@
                                 <rect key="frame" x="40" y="132" width="240" height="240"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="marker-detected-overlay" id="prr-4B-wP2">
+                                <rect key="frame" x="40" y="132" width="240" height="240"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.5607843137254902" green="0.82352941176470584" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Marker Detection" id="lJp-N4-4jW"/>
+                    <navigationItem key="navigationItem" title="Detection" id="lJp-N4-4jW"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
+                        <outlet property="detectedOverlay" destination="prr-4B-wP2" id="TJh-8Y-qJ3"/>
+                        <outlet property="detectionOverlay" destination="j1m-Z0-GgT" id="CSl-cL-2eF"/>
                         <outlet property="glview" destination="GB3-g5-JQt" id="8wN-Zr-CC6"/>
-                        <segue destination="gFq-Yr-Dxf" kind="modal" identifier="VideoPlaying" id="B7k-lW-V1k"/>
                         <segue destination="0W8-pu-MzL" kind="modal" identifier="AssignMedia" id="LcC-Uk-QPx"/>
+                        <segue destination="g0I-p7-EzH" kind="push" identifier="DisplayMedia" id="96a-GS-wwJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1656" y="269"/>
+        </scene>
+        <!--Display Media View Controller-->
+        <scene sceneID="PtK-aD-krb">
+            <objects>
+                <viewController id="g0I-p7-EzH" customClass="ASDisplayMediaViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vB0-gb-V1r">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="8FD-ih-iNJ">
+                                <rect key="frame" x="60" y="20" width="200" height="200"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" id="Lzs-bi-0vJ">
+                        <barButtonItem key="rightBarButtonItem" title="Reassign" id="lOm-dB-PgG">
+                            <connections>
+                                <action selector="reassignMedia:" destination="g0I-p7-EzH" id="42E-5R-rlU"/>
+                                <segue destination="0W8-pu-MzL" kind="modal" identifier="ReassignMedia" id="oay-S6-lLm"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hrk-cX-mAI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2447" y="942"/>
         </scene>
         <!--Video Selection View Controller - Video Selection-->
         <scene sceneID="NTT-lo-DIZ">
@@ -111,7 +151,7 @@
             <objects>
                 <viewController id="ICc-fP-sEM" customClass="ASVideoPlayingViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0t5-2h-Va3">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -123,6 +163,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <nil key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vIQ-08-uHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -257,7 +298,7 @@
             <objects>
                 <viewController id="HBx-cJ-sdS" customClass="ASPhotoDecideViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bEn-Bx-CUE">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="ZKG-ym-QLJ">
@@ -269,6 +310,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="59t-Pa-gqE"/>
+                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="imageView" destination="ZKG-ym-QLJ" id="wVo-dk-jyw"/>
                     </connections>
@@ -276,66 +318,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HKS-tS-OgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5330" y="-87"/>
-        </scene>
-        <!--Video Playing Controller-->
-        <scene sceneID="DKA-rv-PxH">
-            <objects>
-                <viewController id="gFq-Yr-Dxf" customClass="ASVideoPlayingController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bFW-l3-Ea1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" id="OBb-hc-ZYA">
-                                <rect key="frame" x="0.0" y="107" width="320" height="461"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <outlet property="delegate" destination="gFq-Yr-Dxf" id="xHc-fw-NaA"/>
-                                </connections>
-                            </webView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="zVA-Xo-KXE">
-                                <rect key="frame" x="227" y="20" width="73" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="Reassign">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="reassign:" destination="gFq-Yr-Dxf" eventType="touchUpInside" id="Obs-Ng-Zr0"/>
-                                    <segue destination="0W8-pu-MzL" kind="modal" identifier="ReassignMedia" id="Zoh-6A-iEM"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="dRW-Zt-Xd9">
-                                <rect key="frame" x="20" y="20" width="35" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="←">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="back:" destination="gFq-Yr-Dxf" eventType="touchUpInside" id="7z3-GM-0B1"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <connections>
-                        <outlet property="webView" destination="OBb-hc-ZYA" id="658-zL-3qY"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Hb-vv-COf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2379" y="1035"/>
         </scene>
         <!--Navigation Controller - Camera Roll-->
         <scene sceneID="rJh-6O-XgQ">
@@ -363,6 +345,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="0W8-pu-MzL" sceneMemberID="viewController">
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="QrL-lS-72z"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="VOr-Tr-oAD">
                         <autoresizingMask key="autoresizingMask"/>
@@ -442,6 +425,7 @@
         <image name="CameraRollIcon" width="32" height="32"/>
         <image name="ImageSearchIcon" width="32" height="32"/>
         <image name="YoutubeIcon" width="32" height="32"/>
+        <image name="marker-detected-overlay" width="480" height="480"/>
         <image name="marker-detection-overlay" width="480" height="480"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

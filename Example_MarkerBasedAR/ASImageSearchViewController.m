@@ -174,21 +174,12 @@ NSString *const FlickrAPIKey = @"43837ea27d9b418da418f0616b74bdd7";
     if (indexPath.row == self.imageInfos.count) {
         [self searchImageForKeyword:_currentKeyword];
     } else {
+        [ASData sharedData].mediaType = ASMediaTypeImage;
         [ASData sharedData].imageURL = _imageInfos[indexPath.row][@"imageURL"];
+        
         [self performSegueWithIdentifier:@"DecideImage" sender:self];
+
     }
 }
-
-
-#pragma mark - StoryBoard methods
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    if ([segue.identifier isEqualToString:@"DecideImage"]) {
-        ASPhotoDecideViewController *vc = (ASPhotoDecideViewController *) segue.destinationViewController;
-        vc.type = WEB;
-    }
-}
-
 
 @end

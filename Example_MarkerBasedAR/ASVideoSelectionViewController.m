@@ -198,24 +198,6 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
     [ASData sharedData].videoId = _videos[indexPath.row][@"videoId"];
     
     [self performSegueWithIdentifier:@"PlayVideo" sender:self];
-    
-//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.youtube.com/watch?v=%@", [ASData sharedData].videoId]];
-//    NSDictionary *videos = [HCYoutubeParser h264videosWithYoutubeURL:url];
-    
-//    MPMoviePlayerViewController *mpvc = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:videos[@"medium"]]];
-//    [self presentMoviePlayerViewControllerAnimated:mpvc];
-
-//    MPMoviePlayerController *player = [[MPMoviePlayerController alloc] initWithContentURL:[NSURL URLWithString:videos[@"medium"]]];
-//    player.fullscreen = YES;
-//   [player prepareToPlay];
-//    [player play];
-//
-//    [player.view setFrame:CGRectMake(0, 44, self.view.frame.size.width, 400)];
-//    player.view.backgroundColor = [UIColor grayColor];
-//    [self.view addSubview:player.view];
-    
-
-    
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
