@@ -7,15 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MediaPlayer/MediaPlayer.h>
 
-@class VideoPlayerKit;
-@protocol VideoPlayerDelegate;
 
-@interface ASVideoPlayingViewController : UIViewController <VideoPlayerDelegate>
+@class  LBYouTubePlayerViewController;
+@protocol LBYouTubePlayerControllerDelegate;
 
-@property (weak, nonatomic) IBOutlet UIView *contentView;
-@property (weak, nonatomic) IBOutlet UIView *controlView;
-@property (strong, nonatomic) VideoPlayerKit *videoPlayer;
+@interface ASVideoPlayingViewController : UIViewController <LBYouTubePlayerControllerDelegate>
+
+@property (strong, nonatomic) LBYouTubePlayerViewController *player;
 
 - (IBAction)chooseVideo:(id)sender;
 - (IBAction)playVideo:(id)sender;

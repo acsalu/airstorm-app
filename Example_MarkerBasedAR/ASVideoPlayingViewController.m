@@ -11,6 +11,7 @@
 #import "HCYoutubeParser.h"
 #import "VideoPlayerKit.h"
 #import "MBProgressHUD.h"
+#import "LBYouTube.h"
 #import <Parse/Parse.h>
 
 @interface ASVideoPlayingViewController ()
@@ -19,49 +20,19 @@
 
 @implementation ASVideoPlayingViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.youtube.com/watch?v=%@", [ASData sharedData].videoId]];
-    NSDictionary *videos = [HCYoutubeParser h264videosWithYoutubeURL:url];
-    
-    NSLog(@"%@", videos[@"medium"]);
-    
-    
-    MPMoviePlayerViewController *mp = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:[videos objectForKey:@"medium"]]];
-//    [self presentMoviePlayerViewControllerAnimated:mp];
-    
-    NSURL *testUrl = [NSURL URLWithString:@"http://ignhdvod-f.akamaihd.net/i/assets.ign.com/videos/zencoder/,416/d4ff0368b5e4a24aee0dab7703d4123a-110000,640/d4ff0368b5e4a24aee0dab7703d4123a-500000,640/d4ff0368b5e4a24aee0dab7703d4123a-1000000,960/d4ff0368b5e4a24aee0dab7703d4123a-2500000,1280/d4ff0368b5e4a24aee0dab7703d4123a-3000000,-1354660143-w.mp4.csmil/master.m3u8"];
-    
-    
-    
-    _videoPlayer = [VideoPlayerKit videoPlayerWithContainingViewController:self optionalTopView:self.controlView hideTopViewWithControls:YES];
-    [_videoPlayer setControlsEdgeInsets:UIEdgeInsetsMake(self.controlView.frame.size.height, 0, 0, 0)];
-    _videoPlayer.delegate = self;
-    _videoPlayer.allowPortraitFullscreen = NO;
-    
-
-    [self.contentView addSubview:self.videoPlayer.videoPlayerView];
-    [_videoPlayer playVideoWithTitle:@""
-                                 URL:[NSURL URLWithString:videos[@"medium"]]
-                             videoID:nil shareURL:nil isStreaming:NO playInFullScreen:NO];
+    _player = [[LBYouTubePlayerViewController alloc] initWithYouTubeID:[ASData sharedData].videoId quality:LBYouTubeVideoQualityMedium];
+    _player.moviePlayer.movieSourceType = MPMovieSourceTypeStreaming;
+    _player.delegate = self;
+    _player.view.frame = CGRectMake(0.0f, 0.0f, 320.0f, 586.0f);
+    _player.view.center = CGPointMake(self.view.center.x, self.view.center.y - 4);
+    [self.view addSubview:_player.view];
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (IBAction)chooseVideo:(id)sender
 {
@@ -81,10 +52,19 @@
         } else {
             NSLog(@"save failed");
         }
-    }];
+    }];    
+}
+
+#pragma mark - LBYouTubePlayerControllerDelegate methods
+
+- (void)youTubePlayerViewController:(LBYouTubePlayerViewController *)controller didSuccessfullyExtractYouTubeURL:(NSURL *)videoURL
+{
     
 }
 
-- (IBAction)playVideo:(id)sender {
+- (void)youTubePlayerViewController:(LBYouTubePlayerViewController *)controller failedExtractingYouTubeURLWithError:(NSError *)error
+{
+    
 }
+
 @end
