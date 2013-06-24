@@ -20,6 +20,19 @@ NSString *const FlickrAPIKey = @"43837ea27d9b418da418f0616b74bdd7";
 
 @implementation ASImageSearchViewController
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
+    self.navigationItem.leftBarButtonItem = cancelButton;
+}
+
+- (void)cancel
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 #pragma mark - Getter methods
 // with lazy instatiation
 

@@ -19,6 +19,4 @@
 
 @property (strong, nonatomic) NSMutableArray *videos;
 
-- (IBAction)cancelSelection:(id)sender;
-
 @end

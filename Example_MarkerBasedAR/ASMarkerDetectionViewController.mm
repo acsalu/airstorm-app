@@ -103,7 +103,7 @@
         [query whereKey:@"markerId" equalTo:@(id)];
         [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
             if (!error) {
-                if (objects.count == 0) [self performSegueWithIdentifier:@"VideoSelection" sender:self];
+                if (objects.count == 0) [self performSegueWithIdentifier:@"AssignMedia" sender:self];
                 else {
                     NSLog(@"videoId: %@", objects[0][@"videoId"]);
 //                    UIWebView *webView = [[UIWebView alloc] initWithFrame:_glview.frame];
@@ -159,6 +159,7 @@
 }
 
 #pragma mark - CLLocationManagerDelegate methods
+
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     if (locations.count > 0) {

@@ -26,26 +26,27 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
 
 @implementation ASVideoSelectionViewController
 
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    if ((self = [super initWithCoder:aDecoder])) {
-        _videos = [NSMutableArray array];
-        
-        //        _videoView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 385)];
-        //        [self embedYoutube:@"" frame:CGRectMake(0, 0, 320, 385)];
-        //
-        //        [self.view addSubview:_videoView];
-    }
-    
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    NSLog(@"[VideoSelecitonView] for marker(%d) at (%.4f, %.4f)", _markerId, _latitude, _longitude);
+    UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
+    self.navigationItem.leftBarButtonItem = cancelButton;
 }
+
+- (void)cancel
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+#pragma mark - Getter methods
+
+- (NSMutableArray *)videos
+{
+    if (!_videos) _videos = [NSMutableArray arrayWithCapacity:5];
+    return _videos;
+}
+
 
 # pragma mark - YouTube related methods
 
@@ -121,7 +122,7 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _videos.count;
+    return self.videos.count;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -180,9 +181,4 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
 }
 
 
-
-- (IBAction)cancelSelection:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 @end
