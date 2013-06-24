@@ -21,6 +21,8 @@
 #import "ASData.h"
 #import <Parse/Parse.h>
 
+#define THRESHOLD_DISTANCE 0.3
+
 @interface ASMarkerDetectionViewController() <VideoSourceDelegate>
 
 @property (strong, nonatomic) VideoSource * videoSource;
@@ -106,15 +108,17 @@
                 if (objects.count == 0) [self performSegueWithIdentifier:@"AssignMedia" sender:self];
                 else {
                     NSLog(@"videoId: %@", objects[0][@"videoId"]);
-//                    UIWebView *webView = [[UIWebView alloc] initWithFrame:_glview.frame];
-//                    [self.view addSubview:webView];
-//                    NSString *urlString = [NSString stringWithFormat:@"http://www.youtube.com/watch?v=%@", objects[0][@"videoId"]];
-//                    NSURL *url = [NSURL URLWithString:urlString];
-//                    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//                    
-//                    [webView loadRequest:request];
-                    _videoId = objects[0][@"videoId"];
-                    [self performSegueWithIdentifier:@"VideoPlaying" sender:self];
+                    
+                    PFGeoPoint *objectLocation = (PFGeoPoint *) objects[0][@"location"];
+                    NSLog(@"[Marker Detection] Distance from object %.2f km",
+                          [objectLocation distanceInKilometersTo:[PFGeoPoint geoPointWithLocation:[ASData sharedData].location]]);
+                    if (!objectLocation ||
+                        [objectLocation distanceInKilometersTo:[PFGeoPoint geoPointWithLocation:[ASData sharedData].location]] > THRESHOLD_DISTANCE) {
+                        [self performSegueWithIdentifier:@"AssignMedia" sender:self];
+                    } else {
+                        _videoId = objects[0][@"videoId"];
+                        [self performSegueWithIdentifier:@"VideoPlaying" sender:self];
+                    }
                     
                 }
                 _isFetching = NO;
@@ -151,6 +155,7 @@
         vc.markerId = _markerId;
         vc.latitude = _location.coordinate.latitude;
         vc.longitude = _location.coordinate.longitude;
+        [vc.tabBarController setSelectedIndex:1];
     } else if ([segue.identifier isEqualToString:@"VideoPlaying"]) {
         ASVideoPlayingController *vc = (ASVideoPlayingController *) segue.destinationViewController;
         vc.videoId = _videoId;

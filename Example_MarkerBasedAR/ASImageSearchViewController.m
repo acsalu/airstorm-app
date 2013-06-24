@@ -27,8 +27,9 @@ NSString *const FlickrAPIKey = @"43837ea27d9b418da418f0616b74bdd7";
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
     self.navigationItem.leftBarButtonItem = cancelButton;
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
-    [self.view addGestureRecognizer:tap];
+    _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:_tap];
+    [_tap setEnabled:NO];
 }
 
 - (void)dismissKeyboard
@@ -36,7 +37,7 @@ NSString *const FlickrAPIKey = @"43837ea27d9b418da418f0616b74bdd7";
     if (_isEditing) {
         [_searchBar endEditing:YES];
         [_searchBar setShowsCancelButton:NO animated:YES];
-        _isEditing = NO;
+        self.isEditing = NO;
     }
 }
 
@@ -45,9 +46,15 @@ NSString *const FlickrAPIKey = @"43837ea27d9b418da418f0616b74bdd7";
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - Getter methods
-// with lazy instatiation
+#pragma mark - Setter & Getter methods
 
+- (void)setIsEditing:(BOOL)isEditing
+{
+    [_tap setEnabled:isEditing];
+    _isEditing = isEditing;
+}
+
+// with lazy instatiation
 - (NSMutableArray *)imageInfos
 {
     if (!_imageInfos) _imageInfos = [NSMutableArray array];
@@ -116,19 +123,19 @@ NSString *const FlickrAPIKey = @"43837ea27d9b418da418f0616b74bdd7";
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
     [searchBar setShowsCancelButton:YES animated:YES];
-    _isEditing = YES;
+    self.isEditing = YES;
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar endEditing:YES];
-    _isEditing = NO;
+    self.isEditing = NO;
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar endEditing:YES];
-    _isEditing = NO;
+    self.isEditing = NO;
     
     [searchBar setShowsCancelButton:NO animated:YES];
     [self searchImageForKeyword:searchBar.text];

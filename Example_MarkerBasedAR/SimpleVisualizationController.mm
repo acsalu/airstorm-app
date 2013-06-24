@@ -151,80 +151,80 @@
 
 - (void) drawAR
 {
-    Matrix44 projectionMatrix;
-    [self buildProjectionMatrix:m_calibration.getIntrinsic():m_frameSize.width :m_frameSize.height :projectionMatrix];
-    
-    glMatrixMode(GL_PROJECTION);
-    glLoadMatrixf(projectionMatrix.data);
-    
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
-    
-    glDepthMask(TRUE);
-    glEnable(GL_DEPTH_TEST);
-    //glDepthFunc(GL_LESS);
-    //glDepthFunc(GL_GREATER);
-    
-    glEnableClientState(GL_VERTEX_ARRAY);
-    glEnableClientState(GL_NORMAL_ARRAY);
-    
-    glPushMatrix();
-    glLineWidth(3.0f);
-    
-    float lineX[] = {0,0,0,1,0,0};
-    float lineY[] = {0,0,0,0,1,0};
-    float lineZ[] = {0,0,0,0,0,1};
-    
-    const GLfloat squareVertices[] = {
-        -0.5f, -0.5f,
-        0.5f,  -0.5f,
-        -0.5f,  0.5f,
-        0.5f,   0.5f,
-    };
-    const GLubyte squareColors[] = {
-        255, 255,   0, 255,
-        0,   255, 255, 255,
-        0,     0,   0,   0,
-        255,   0, 255, 255,
-    };
-    
-    for (size_t transformationIndex=0; transformationIndex<m_transformations.size(); transformationIndex++)
-    {
-        const Transformation& transformation = m_transformations[transformationIndex];
-        
-        Matrix44 glMatrix = transformation.getMat44();
-        
-        glLoadMatrixf(reinterpret_cast<const GLfloat*>(&glMatrix.data[0]));
-        
-        // draw data
-        glVertexPointer(2, GL_FLOAT, 0, squareVertices);
-        glEnableClientState(GL_VERTEX_ARRAY);
-        glColorPointer(4, GL_UNSIGNED_BYTE, 0, squareColors);
-        glEnableClientState(GL_COLOR_ARRAY);
-        
-        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-        glDisableClientState(GL_COLOR_ARRAY);
-        
-        float scale = 0.5;
-        glScalef(scale, scale, scale);
-        
-        glTranslatef(0, 0, 0.1f);
-        
-        glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
-        glVertexPointer(3, GL_FLOAT, 0, lineX);
-        glDrawArrays(GL_LINES, 0, 2);
-        
-        glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
-        glVertexPointer(3, GL_FLOAT, 0, lineY);
-        glDrawArrays(GL_LINES, 0, 2);
-        
-        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
-        glVertexPointer(3, GL_FLOAT, 0, lineZ);
-        glDrawArrays(GL_LINES, 0, 2);
-    }
-    
-    glPopMatrix();
-    glDisableClientState(GL_VERTEX_ARRAY);
+//    Matrix44 projectionMatrix;
+//    [self buildProjectionMatrix:m_calibration.getIntrinsic():m_frameSize.width :m_frameSize.height :projectionMatrix];
+//    
+//    glMatrixMode(GL_PROJECTION);
+//    glLoadMatrixf(projectionMatrix.data);
+//    
+//    glMatrixMode(GL_MODELVIEW);
+//    glLoadIdentity();
+//    
+//    glDepthMask(TRUE);
+//    glEnable(GL_DEPTH_TEST);
+//    //glDepthFunc(GL_LESS);
+//    //glDepthFunc(GL_GREATER);
+//    
+//    glEnableClientState(GL_VERTEX_ARRAY);
+//    glEnableClientState(GL_NORMAL_ARRAY);
+//    
+//    glPushMatrix();
+//    glLineWidth(3.0f);
+//    
+//    float lineX[] = {0,0,0,1,0,0};
+//    float lineY[] = {0,0,0,0,1,0};
+//    float lineZ[] = {0,0,0,0,0,1};
+//    
+//    const GLfloat squareVertices[] = {
+//        -0.5f, -0.5f,
+//        0.5f,  -0.5f,
+//        -0.5f,  0.5f,
+//        0.5f,   0.5f,
+//    };
+//    const GLubyte squareColors[] = {
+//        255, 255,   0, 255,
+//        0,   255, 255, 255,
+//        0,     0,   0,   0,
+//        255,   0, 255, 255,
+//    };
+//    
+//    for (size_t transformationIndex=0; transformationIndex<m_transformations.size(); transformationIndex++)
+//    {
+//        const Transformation& transformation = m_transformations[transformationIndex];
+//        
+//        Matrix44 glMatrix = transformation.getMat44();
+//        
+//        glLoadMatrixf(reinterpret_cast<const GLfloat*>(&glMatrix.data[0]));
+//        
+//        // draw data
+//        glVertexPointer(2, GL_FLOAT, 0, squareVertices);
+//        glEnableClientState(GL_VERTEX_ARRAY);
+//        glColorPointer(4, GL_UNSIGNED_BYTE, 0, squareColors);
+//        glEnableClientState(GL_COLOR_ARRAY);
+//        
+//        glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
+//        glDisableClientState(GL_COLOR_ARRAY);
+//        
+//        float scale = 0.5;
+//        glScalef(scale, scale, scale);
+//        
+//        glTranslatef(0, 0, 0.1f);
+//        
+//        glColor4f(1.0f, 0.0f, 0.0f, 1.0f);
+//        glVertexPointer(3, GL_FLOAT, 0, lineX);
+//        glDrawArrays(GL_LINES, 0, 2);
+//        
+//        glColor4f(0.0f, 1.0f, 0.0f, 1.0f);
+//        glVertexPointer(3, GL_FLOAT, 0, lineY);
+//        glDrawArrays(GL_LINES, 0, 2);
+//        
+//        glColor4f(0.0f, 0.0f, 1.0f, 1.0f);
+//        glVertexPointer(3, GL_FLOAT, 0, lineZ);
+//        glDrawArrays(GL_LINES, 0, 2);
+//    }
+//    
+//    glPopMatrix();
+//    glDisableClientState(GL_VERTEX_ARRAY);
 }
 
 - (void)drawFrame

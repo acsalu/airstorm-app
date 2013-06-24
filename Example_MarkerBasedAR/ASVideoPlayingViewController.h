@@ -10,4 +10,7 @@
 
 @interface ASVideoPlayingViewController : UIViewController
 
+
+- (IBAction)chooseVideo:(id)sender;
+
 @end

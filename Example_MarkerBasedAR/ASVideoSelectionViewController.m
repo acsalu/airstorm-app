@@ -10,8 +10,10 @@
 #import "AFNetworking.h"
 #import "ASVideoTableViewCell.h"
 #import "MBProgressHUD.h"
+#import "ASVideoPlayingController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <Parse/Parse.h>
+#import "HCYoutubeParser.h"
 
 
 #define CELL_IMG_TAG 100
@@ -33,8 +35,10 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStylePlain target:self action:@selector(cancel)];
     self.navigationItem.leftBarButtonItem = cancelButton;
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
-    [self.view addGestureRecognizer:tap];
+    _tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    [self.view addGestureRecognizer:_tap];
+    [_tap setEnabled:NO];
+    
 }
 
 - (void)dismissKeyboard
@@ -42,7 +46,7 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
     if (_isEditing) {
         [_searchBar endEditing:YES];
         [_searchBar setShowsCancelButton:NO animated:YES];
-        _isEditing = NO;
+        self.isEditing = NO;
     }
 }
 - (void)cancel
@@ -50,7 +54,13 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - Getter methods
+#pragma mark - Setter & Getter methods
+
+- (void)setIsEditing:(BOOL)isEditing
+{
+    [_tap setEnabled:isEditing];
+    _isEditing = isEditing;
+}
 
 - (NSMutableArray *)videos
 {
@@ -75,7 +85,6 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
                            "<embed id='yt' src='http://www.youtube.com/embed/%@?autoplay=1' type='application/x-shockwave-flash'"
                            "width='%0.0f' height='%0.0f'></embed>"
                            "</body></html>", @"M7lc1UVf-VE", frame.size.width, frame.size.height];
-    
 }
 
 
@@ -84,19 +93,19 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
 {
     [searchBar setShowsCancelButton:YES animated:YES];
-    _isEditing = YES;
+    self.isEditing = YES;
 }
 
 - (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar
 {
     [searchBar endEditing:YES];
-    _isEditing = NO;
+    self.isEditing = NO;
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [_searchBar endEditing:YES];
-    _isEditing = NO;
+    self.isEditing = NO;
     
     [searchBar setShowsCancelButton:NO animated:YES];
     
@@ -186,7 +195,12 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
 {
     NSLog(@"Select video: %@", _videos[indexPath.row][@"title"]);
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.youtube.com/watch?v=%@", _videos[indexPath.row][@"videoId"]]];
+    NSDictionary *videos = [HCYoutubeParser h264videosWithYoutubeURL:url];
     
+    MPMoviePlayerViewController *mp = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:[videos objectForKey:@"medium"]]];
+    [self presentMoviePlayerViewControllerAnimated:mp];
+    
+    /*
     ASVideoTableViewCell *cell = (ASVideoTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
     
     UIWebView *webView = [[UIWebView alloc] initWithFrame:[cell.imageView frame]];
@@ -210,8 +224,14 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
             NSLog(@"save failed");
         }
     }];
-    
+    */
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.row > 0 && indexPath.row == self.videos.count - 1) {
+        NSLog(@"[Video Search] Load more!");
+    }
+}
 
 @end

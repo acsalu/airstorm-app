@@ -1,18 +1,18 @@
 //
-//  ASVideoPlayingViewController.m
+//  ASDisplayMediaViewController.m
 //  AirStorm
 //
-//  Created by Acsa Lu on 6/23/13.
+//  Created by Acsa Lu on 6/24/13.
 //
 //
 
-#import "ASVideoPlayingViewController.h"
+#import "ASDisplayMediaViewController.h"
 
-@interface ASVideoPlayingViewController ()
+@interface ASDisplayMediaViewController ()
 
 @end
 
-@implementation ASVideoPlayingViewController
+@implementation ASDisplayMediaViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,6 +35,4 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)chooseVideo:(id)sender {
-}
 @end

@@ -64,6 +64,25 @@
 		90E40F801768D0A900C40049 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E40F7F1768D0A900C40049 /* Security.framework */; };
 		90E40F841768D0B500C40049 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E40F831768D0B500C40049 /* SystemConfiguration.framework */; };
 		90E40F8B1768DBBB00C40049 /* ASVideoSelectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E40F8A1768DBBB00C40049 /* ASVideoSelectionViewController.m */; };
+		90E5ABD917781DEA00AB720B /* ASDisplayMediaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E5ABD817781DEA00AB720B /* ASDisplayMediaViewController.m */; };
+		90E5ABDB1778208900AB720B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E5ABDA1778208900AB720B /* MediaPlayer.framework */; };
+		90E5ABDE177820A000AB720B /* HCYoutubeParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E5ABDD177820A000AB720B /* HCYoutubeParser.m */; };
+		90E5ABEC177823BA00AB720B /* AirplayActiveView.h in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E5ABE1177823BA00AB720B /* AirplayActiveView.h */; };
+		90E5ABED177823BA00AB720B /* AirplayActiveView.m in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E5ABE2177823BA00AB720B /* AirplayActiveView.m */; };
+		90E5ABEE177823BA00AB720B /* FullScreenView.h in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E5ABE3177823BA00AB720B /* FullScreenView.h */; };
+		90E5ABEF177823BA00AB720B /* FullScreenView.m in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E5ABE4177823BA00AB720B /* FullScreenView.m */; };
+		90E5ABF0177823BA00AB720B /* FullScreenViewController.h in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E5ABE5177823BA00AB720B /* FullScreenViewController.h */; };
+		90E5ABF1177823BA00AB720B /* FullScreenViewController.m in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E5ABE6177823BA00AB720B /* FullScreenViewController.m */; };
+		90E5ABF2177823BA00AB720B /* VideoPlayer.h in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E5ABE7177823BA00AB720B /* VideoPlayer.h */; };
+		90E5ABF3177823BA00AB720B /* VideoPlayerKit.h in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E5ABE8177823BA00AB720B /* VideoPlayerKit.h */; };
+		90E5ABF4177823BA00AB720B /* VideoPlayerKit.m in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E5ABE9177823BA00AB720B /* VideoPlayerKit.m */; };
+		90E5ABF5177823BA00AB720B /* VideoPlayerView.h in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E5ABEA177823BA00AB720B /* VideoPlayerView.h */; };
+		90E5ABF6177823BA00AB720B /* VideoPlayerView.m in Frameworks */ = {isa = PBXBuildFile; fileRef = 90E5ABEB177823BA00AB720B /* VideoPlayerView.m */; };
+		90E5AC02177823D000AB720B /* AirplayActiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E5ABF8177823D000AB720B /* AirplayActiveView.m */; };
+		90E5AC03177823D000AB720B /* FullScreenView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E5ABFA177823D000AB720B /* FullScreenView.m */; };
+		90E5AC04177823D000AB720B /* FullScreenViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E5ABFC177823D000AB720B /* FullScreenViewController.m */; };
+		90E5AC05177823D000AB720B /* VideoPlayerKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E5ABFF177823D000AB720B /* VideoPlayerKit.m */; };
+		90E5AC06177823D000AB720B /* VideoPlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 90E5AC01177823D000AB720B /* VideoPlayerView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -162,6 +181,33 @@
 		90E40F831768D0B500C40049 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		90E40F891768DBBB00C40049 /* ASVideoSelectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASVideoSelectionViewController.h; sourceTree = "<group>"; };
 		90E40F8A1768DBBB00C40049 /* ASVideoSelectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASVideoSelectionViewController.m; sourceTree = "<group>"; };
+		90E5ABD717781DEA00AB720B /* ASDisplayMediaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASDisplayMediaViewController.h; sourceTree = "<group>"; };
+		90E5ABD817781DEA00AB720B /* ASDisplayMediaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASDisplayMediaViewController.m; sourceTree = "<group>"; };
+		90E5ABDA1778208900AB720B /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		90E5ABDC177820A000AB720B /* HCYoutubeParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HCYoutubeParser.h; sourceTree = "<group>"; };
+		90E5ABDD177820A000AB720B /* HCYoutubeParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HCYoutubeParser.m; sourceTree = "<group>"; };
+		90E5ABE1177823BA00AB720B /* AirplayActiveView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AirplayActiveView.h; path = ../VideoPlayerKit/Code/AirplayActiveView.h; sourceTree = "<group>"; };
+		90E5ABE2177823BA00AB720B /* AirplayActiveView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = AirplayActiveView.m; path = ../VideoPlayerKit/Code/AirplayActiveView.m; sourceTree = "<group>"; };
+		90E5ABE3177823BA00AB720B /* FullScreenView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FullScreenView.h; path = ../VideoPlayerKit/Code/FullScreenView.h; sourceTree = "<group>"; };
+		90E5ABE4177823BA00AB720B /* FullScreenView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FullScreenView.m; path = ../VideoPlayerKit/Code/FullScreenView.m; sourceTree = "<group>"; };
+		90E5ABE5177823BA00AB720B /* FullScreenViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = FullScreenViewController.h; path = ../VideoPlayerKit/Code/FullScreenViewController.h; sourceTree = "<group>"; };
+		90E5ABE6177823BA00AB720B /* FullScreenViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FullScreenViewController.m; path = ../VideoPlayerKit/Code/FullScreenViewController.m; sourceTree = "<group>"; };
+		90E5ABE7177823BA00AB720B /* VideoPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VideoPlayer.h; path = ../VideoPlayerKit/Code/VideoPlayer.h; sourceTree = "<group>"; };
+		90E5ABE8177823BA00AB720B /* VideoPlayerKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VideoPlayerKit.h; path = ../VideoPlayerKit/Code/VideoPlayerKit.h; sourceTree = "<group>"; };
+		90E5ABE9177823BA00AB720B /* VideoPlayerKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VideoPlayerKit.m; path = ../VideoPlayerKit/Code/VideoPlayerKit.m; sourceTree = "<group>"; };
+		90E5ABEA177823BA00AB720B /* VideoPlayerView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = VideoPlayerView.h; path = ../VideoPlayerKit/Code/VideoPlayerView.h; sourceTree = "<group>"; };
+		90E5ABEB177823BA00AB720B /* VideoPlayerView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = VideoPlayerView.m; path = ../VideoPlayerKit/Code/VideoPlayerView.m; sourceTree = "<group>"; };
+		90E5ABF7177823D000AB720B /* AirplayActiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AirplayActiveView.h; sourceTree = "<group>"; };
+		90E5ABF8177823D000AB720B /* AirplayActiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AirplayActiveView.m; sourceTree = "<group>"; };
+		90E5ABF9177823D000AB720B /* FullScreenView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenView.h; sourceTree = "<group>"; };
+		90E5ABFA177823D000AB720B /* FullScreenView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullScreenView.m; sourceTree = "<group>"; };
+		90E5ABFB177823D000AB720B /* FullScreenViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FullScreenViewController.h; sourceTree = "<group>"; };
+		90E5ABFC177823D000AB720B /* FullScreenViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FullScreenViewController.m; sourceTree = "<group>"; };
+		90E5ABFD177823D000AB720B /* VideoPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayer.h; sourceTree = "<group>"; };
+		90E5ABFE177823D000AB720B /* VideoPlayerKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayerKit.h; sourceTree = "<group>"; };
+		90E5ABFF177823D000AB720B /* VideoPlayerKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayerKit.m; sourceTree = "<group>"; };
+		90E5AC00177823D000AB720B /* VideoPlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoPlayerView.h; sourceTree = "<group>"; };
+		90E5AC01177823D000AB720B /* VideoPlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoPlayerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +215,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90E5ABEC177823BA00AB720B /* AirplayActiveView.h in Frameworks */,
+				90E5ABED177823BA00AB720B /* AirplayActiveView.m in Frameworks */,
+				90E5ABEE177823BA00AB720B /* FullScreenView.h in Frameworks */,
+				90E5ABEF177823BA00AB720B /* FullScreenView.m in Frameworks */,
+				90E5ABF0177823BA00AB720B /* FullScreenViewController.h in Frameworks */,
+				90E5ABF1177823BA00AB720B /* FullScreenViewController.m in Frameworks */,
+				90E5ABF2177823BA00AB720B /* VideoPlayer.h in Frameworks */,
+				90E5ABF3177823BA00AB720B /* VideoPlayerKit.h in Frameworks */,
+				90E5ABF4177823BA00AB720B /* VideoPlayerKit.m in Frameworks */,
+				90E5ABF5177823BA00AB720B /* VideoPlayerView.h in Frameworks */,
+				90E5ABF6177823BA00AB720B /* VideoPlayerView.m in Frameworks */,
+				8ADAC473150508F7008B5F2A /* CoreMedia.framework in Frameworks */,
+				90E40F761768D08300C40049 /* AudioToolbox.framework in Frameworks */,
+				90E5ABDB1778208900AB720B /* MediaPlayer.framework in Frameworks */,
 				903F4CDB17760D6E0020D1E9 /* AssetsLibrary.framework in Frameworks */,
 				90E40F841768D0B500C40049 /* SystemConfiguration.framework in Frameworks */,
 				90E40F801768D0A900C40049 /* Security.framework in Frameworks */,
@@ -177,12 +237,10 @@
 				90E40F7A1768D09700C40049 /* CoreLocation.framework in Frameworks */,
 				8ADAC43D1504BC61008B5F2A /* CoreGraphics.framework in Frameworks */,
 				90E40F781768D08900C40049 /* CFNetwork.framework in Frameworks */,
-				90E40F761768D08300C40049 /* AudioToolbox.framework in Frameworks */,
 				8A8BD08D15E4DFE300B9E08E /* opencv2.framework in Frameworks */,
 				8A2051931510BB7B00E80270 /* OpenGLES.framework in Frameworks */,
 				8A2051951510BB8C00E80270 /* QuartzCore.framework in Frameworks */,
 				8A2051921510BB7B00E80270 /* GLKit.framework in Frameworks */,
-				8ADAC473150508F7008B5F2A /* CoreMedia.framework in Frameworks */,
 				8ADAC471150508EF008B5F2A /* AVFoundation.framework in Frameworks */,
 				9065CF1C1768CFF9008864FF /* Parse.framework in Frameworks */,
 				8ADAC46F150508E8008B5F2A /* CoreVideo.framework in Frameworks */,
@@ -242,9 +300,23 @@
 		8ADAC4371504BC61008B5F2A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				90E5ABE1177823BA00AB720B /* AirplayActiveView.h */,
+				90E5ABE2177823BA00AB720B /* AirplayActiveView.m */,
+				90E5ABE3177823BA00AB720B /* FullScreenView.h */,
+				90E5ABE4177823BA00AB720B /* FullScreenView.m */,
+				90E5ABE5177823BA00AB720B /* FullScreenViewController.h */,
+				90E5ABE6177823BA00AB720B /* FullScreenViewController.m */,
+				90E5ABE7177823BA00AB720B /* VideoPlayer.h */,
+				90E5ABE8177823BA00AB720B /* VideoPlayerKit.h */,
+				90E5ABE9177823BA00AB720B /* VideoPlayerKit.m */,
+				90E5ABEA177823BA00AB720B /* VideoPlayerView.h */,
+				90E5ABEB177823BA00AB720B /* VideoPlayerView.m */,
+				90E5ABE0177823A800AB720B /* VideoPlayerKit */,
+				90E5ABDA1778208900AB720B /* MediaPlayer.framework */,
 				903F4CDA17760D6E0020D1E9 /* AssetsLibrary.framework */,
 				901A4D791768E3F7008AF9EF /* MBProgressHUD.h */,
 				901A4D7A1768E3F7008AF9EF /* MBProgressHUD.m */,
+				90E5ABDF177820A700AB720B /* HCYoutubeParser */,
 				901A4D591768E357008AF9EF /* AFNetworking */,
 				90E40F831768D0B500C40049 /* SystemConfiguration.framework */,
 				90E40F811768D0AF00C40049 /* StoreKit.framework */,
@@ -282,6 +354,8 @@
 				8ADAC44A1504BC61008B5F2A /* MainStoryboard_iPhone.storyboard */,
 				8ADAC4501504BC61008B5F2A /* ASMarkerDetectionViewController.h */,
 				8ADAC4511504BC61008B5F2A /* ASMarkerDetectionViewController.mm */,
+				90E5ABD717781DEA00AB720B /* ASDisplayMediaViewController.h */,
+				90E5ABD817781DEA00AB720B /* ASDisplayMediaViewController.m */,
 				903832DE1776F7F500BCE0D1 /* VideoSelection */,
 				903832E51776FC9C00BCE0D1 /* ImageSelection */,
 				903832DD1776EA1A00BCE0D1 /* PhotoSelection */,
@@ -384,6 +458,33 @@
 			name = ImageSelection;
 			sourceTree = "<group>";
 		};
+		90E5ABDF177820A700AB720B /* HCYoutubeParser */ = {
+			isa = PBXGroup;
+			children = (
+				90E5ABDC177820A000AB720B /* HCYoutubeParser.h */,
+				90E5ABDD177820A000AB720B /* HCYoutubeParser.m */,
+			);
+			name = HCYoutubeParser;
+			sourceTree = "<group>";
+		};
+		90E5ABE0177823A800AB720B /* VideoPlayerKit */ = {
+			isa = PBXGroup;
+			children = (
+				90E5ABF7177823D000AB720B /* AirplayActiveView.h */,
+				90E5ABF8177823D000AB720B /* AirplayActiveView.m */,
+				90E5ABF9177823D000AB720B /* FullScreenView.h */,
+				90E5ABFA177823D000AB720B /* FullScreenView.m */,
+				90E5ABFB177823D000AB720B /* FullScreenViewController.h */,
+				90E5ABFC177823D000AB720B /* FullScreenViewController.m */,
+				90E5ABFD177823D000AB720B /* VideoPlayer.h */,
+				90E5ABFE177823D000AB720B /* VideoPlayerKit.h */,
+				90E5ABFF177823D000AB720B /* VideoPlayerKit.m */,
+				90E5AC00177823D000AB720B /* VideoPlayerView.h */,
+				90E5AC01177823D000AB720B /* VideoPlayerView.m */,
+			);
+			name = VideoPlayerKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -465,8 +566,10 @@
 				8ADAC4491504BC61008B5F2A /* AppDelegate.m in Sources */,
 				903F4CDF1776A9B70020D1E9 /* ASPhotoDecideViewController.m in Sources */,
 				903832D91776C11900BCE0D1 /* ASData.m in Sources */,
+				90E5AC04177823D000AB720B /* FullScreenViewController.m in Sources */,
 				901A4D7B1768E3F7008AF9EF /* MBProgressHUD.m in Sources */,
 				901A4D721768E358008AF9EF /* AFPropertyListRequestOperation.m in Sources */,
+				90E5AC05177823D000AB720B /* VideoPlayerKit.m in Sources */,
 				9028E3CA1775E50C002C2AB1 /* ASPhotoSelectionViewController.m in Sources */,
 				8ADAC4521504BC61008B5F2A /* ASMarkerDetectionViewController.mm in Sources */,
 				901A4D731768E358008AF9EF /* AFURLConnectionOperation.m in Sources */,
@@ -485,9 +588,14 @@
 				8AFB8A421518CA1D00A42DEE /* GeometryTypes.cpp in Sources */,
 				903832E11776F81500BCE0D1 /* ASVideoPlayingViewController.m in Sources */,
 				901A4D741768E358008AF9EF /* AFXMLRequestOperation.m in Sources */,
+				90E5AC06177823D000AB720B /* VideoPlayerView.m in Sources */,
 				903F4CD51775EF1D0020D1E9 /* ASCameraOverlayViewController.m in Sources */,
+				90E5AC03177823D000AB720B /* FullScreenView.m in Sources */,
+				90E5AC02177823D000AB720B /* AirplayActiveView.m in Sources */,
+				90E5ABDE177820A000AB720B /* HCYoutubeParser.m in Sources */,
 				90E40F8B1768DBBB00C40049 /* ASVideoSelectionViewController.m in Sources */,
 				901A4D701768E358008AF9EF /* AFJSONRequestOperation.m in Sources */,
+				90E5ABD917781DEA00AB720B /* ASDisplayMediaViewController.m in Sources */,
 				9028E3BD1775C2BB002C2AB1 /* ASInputSourceSelectionView.m in Sources */,
 				901A4D751768E358008AF9EF /* UIImageView+AFNetworking.m in Sources */,
 				903832E41776FC8A00BCE0D1 /* ASImageSearchViewController.m in Sources */,

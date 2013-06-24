@@ -15,7 +15,9 @@
 
 @property (strong, nonatomic) NSMutableArray *imageInfos;
 @property (strong, nonatomic) NSString *currentKeyword;
+@property (strong, nonatomic) UITapGestureRecognizer *tap;
 @property (nonatomic) int page;
 @property (nonatomic) BOOL isEditing;
+
 
 @end
