@@ -13,7 +13,7 @@
 #import "ASVideoPlayingController.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import <Parse/Parse.h>
-#import "HCYoutubeParser.h"
+#import "ASData.h"
 
 
 #define CELL_IMG_TAG 100
@@ -194,37 +194,10 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"Select video: %@", _videos[indexPath.row][@"title"]);
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.youtube.com/watch?v=%@", _videos[indexPath.row][@"videoId"]]];
-    NSDictionary *videos = [HCYoutubeParser h264videosWithYoutubeURL:url];
+    [ASData sharedData].videoId = _videos[indexPath.row][@"videoId"];
     
-    MPMoviePlayerViewController *mp = [[MPMoviePlayerViewController alloc] initWithContentURL:[NSURL URLWithString:[videos objectForKey:@"medium"]]];
-    [self presentMoviePlayerViewControllerAnimated:mp];
+    [self performSegueWithIdentifier:@"PlayVideo" sender:self];
     
-    /*
-    ASVideoTableViewCell *cell = (ASVideoTableViewCell *) [tableView cellForRowAtIndexPath:indexPath];
-    
-    UIWebView *webView = [[UIWebView alloc] initWithFrame:[cell.imageView frame]];
-    [webView loadRequest:[NSURLRequest requestWithURL:url]];
-    [cell addSubview:webView];
-    
-    PFObject *playBackObject = [PFObject objectWithClassName:@"PlayBack"];
-    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLatitude:_latitude longitude:_longitude];
-    [playBackObject setObject:@(_markerId) forKey:@"markerId"];
-    [playBackObject setObject:_videos[indexPath.row][@"videoId"] forKey:@"videoId"];
-    [playBackObject setObject:geoPoint forKey:@"location"];
-    
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
-    [playBackObject saveEventually:^(BOOL succeeded, NSError *error) {
-        if (succeeded) {
-            NSLog(@"save succeeded");
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            [self dismissViewControllerAnimated:YES completion:nil];
-        } else {
-            NSLog(@"save failed");
-        }
-    }];
-    */
 }
 
 - (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath

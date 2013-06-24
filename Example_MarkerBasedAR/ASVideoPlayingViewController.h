@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ASVideoPlayingViewController : UIViewController
+@class VideoPlayerKit;
+@protocol VideoPlayerDelegate;
 
+@interface ASVideoPlayingViewController : UIViewController <VideoPlayerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIView *contentView;
+@property (weak, nonatomic) IBOutlet UIView *controlView;
+@property (strong, nonatomic) VideoPlayerKit *videoPlayer;
 
 - (IBAction)chooseVideo:(id)sender;
+- (IBAction)playVideo:(id)sender;
 
 @end
