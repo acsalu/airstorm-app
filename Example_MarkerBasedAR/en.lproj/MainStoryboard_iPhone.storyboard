@@ -52,7 +52,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1656" y="269"/>
+            <point key="canvasLocation" x="-296" y="211"/>
         </scene>
         <!--Display Media View Controller-->
         <scene sceneID="PtK-aD-krb">
@@ -82,7 +82,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hrk-cX-mAI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2447" y="942"/>
+            <point key="canvasLocation" x="631" y="788"/>
         </scene>
         <!--Video Selection View Controller - Video Selection-->
         <scene sceneID="NTT-lo-DIZ">
@@ -150,7 +150,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aFE-fq-c4z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4621" y="973"/>
+            <point key="canvasLocation" x="2853" y="933"/>
         </scene>
         <!--Video Playing View Controller-->
         <scene sceneID="2sO-xX-rcS">
@@ -173,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vIQ-08-uHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5153" y="973"/>
+            <point key="canvasLocation" x="3385" y="933"/>
         </scene>
         <!--Image Search View Controller - Online Image-->
         <scene sceneID="ktI-7A-PcZ">
@@ -239,7 +239,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yvb-sl-nKS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4612" y="227"/>
+            <point key="canvasLocation" x="2844" y="187"/>
         </scene>
         <!--Photo Selection View Controller - Camera Roll-->
         <scene sceneID="LJR-nm-R8a">
@@ -297,7 +297,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UEB-Ye-scg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4573" y="-471"/>
+            <point key="canvasLocation" x="2805" y="-511"/>
         </scene>
         <!--Photo Decide View Controller-->
         <scene sceneID="xG7-z7-j5q">
@@ -323,7 +323,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HKS-tS-OgA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5330" y="-87"/>
+            <point key="canvasLocation" x="3562" y="-127"/>
         </scene>
         <!--Navigation Controller - Camera Roll-->
         <scene sceneID="rJh-6O-XgQ">
@@ -343,7 +343,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xby-vP-lsV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4047" y="-471"/>
+            <point key="canvasLocation" x="2279" y="-511"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="XWu-Gu-So6">
@@ -365,7 +365,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lmv-Sf-ZyI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3262" y="243"/>
+            <point key="canvasLocation" x="1494" y="203"/>
         </scene>
         <!--Navigation Controller - Youtube Video-->
         <scene sceneID="qEz-nz-cSJ">
@@ -385,7 +385,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qtG-wA-ucp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4095" y="973"/>
+            <point key="canvasLocation" x="2327" y="933"/>
         </scene>
         <!--Navigation Controller - Online Image-->
         <scene sceneID="g7f-tC-K2L">
@@ -405,7 +405,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgE-DH-ncO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4086" y="227"/>
+            <point key="canvasLocation" x="2318" y="187"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Nsx-hA-fRB">
@@ -424,7 +424,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zbz-WR-2HE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1170" y="269"/>
+            <point key="canvasLocation" x="-1102" y="203"/>
         </scene>
     </scenes>
     <resources>
@@ -441,7 +441,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="LcC-Uk-QPx"/>
+        <segue reference="oay-S6-lLm"/>
         <segue reference="Agm-2k-Jr7"/>
     </inferredMetricsTieBreakers>
 </document>

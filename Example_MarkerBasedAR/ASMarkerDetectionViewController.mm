@@ -21,7 +21,7 @@
 #import "ASData.h"
 #import <Parse/Parse.h>
 
-#define THRESHOLD_DISTANCE 0.05
+#define THRESHOLD_DISTANCE 0.3
 #define THRESHOLD_TIME_INTERVAL 3600
 
 @interface ASMarkerDetectionViewController() <VideoSourceDelegate>
@@ -145,11 +145,11 @@
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
             
-//            NSLog(@"%d objects found", objects.count);
-//            for (PFObject *object in objects) {
-//                PFGeoPoint *location = (PFGeoPoint *) object[@"location"];
-//                NSLog(@"[%@][%@] distance %f", object.objectId, [formatter stringFromDate:object.createdAt], [location distanceInKilometersTo:[PFGeoPoint geoPointWithLocation:[ASData sharedData].location]]);
-//            }
+            NSLog(@"%d objects found", objects.count);
+            for (PFObject *object in objects) {
+                PFGeoPoint *location = (PFGeoPoint *) object[@"location"];
+                NSLog(@"[%@][%@] distance %f", object.objectId, [formatter stringFromDate:object.createdAt], [location distanceInKilometersTo:[PFGeoPoint geoPointWithLocation:[ASData sharedData].location]]);
+            }
             
             
             if (objects.count == 0) [self performSegueWithIdentifier:@"AssignMedia" sender:self];

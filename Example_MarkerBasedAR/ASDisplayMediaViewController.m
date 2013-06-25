@@ -10,6 +10,7 @@
 #import "ASData.h"
 #import "LBYouTube.h"
 #import "AFNetworking.h"
+#import "MBProgressHUD.h"
 
 @interface ASDisplayMediaViewController ()
 
@@ -30,6 +31,10 @@
 {
     [super viewDidLoad];
     
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:HUD];
+    HUD.labelText = @"Loading";
+    
     [ASData sharedData].displayMediaVC = self;
     
     self.navigationItem.leftBarButtonItem.title = @"Detection";
@@ -45,12 +50,33 @@
         [self.view addSubview:_player.view];
         
     } else {
-        _imageView = [[UIImageView alloc] init];
+        
         NSLog(@"[Display Media] ImageURL: %@", [ASData sharedData].imageURL);
-        [_imageView setImageWithURL:[NSURL URLWithString:[ASData sharedData].imageURL]];
-        _imageView.frame = CGRectMake(0, 0, _imageView.image.size.width, _imageView.image.size.height);
-        _imageView.center = CGPointMake(self.view.center.x, self.view.center.y - 30);
-        [self.view addSubview:_imageView];
+        [HUD show:YES];
+        _imageView = [[UIImageView alloc] init];
+        NSURL *url = [NSURL URLWithString:[ASData sharedData].imageURL];
+        
+        __weak UIImageView * weakImageView = _imageView;
+        __weak typeof(self) weakSelf = self;
+        __weak MBProgressHUD *weakHUD = HUD;
+        [_imageView setImageWithURLRequest:[NSURLRequest requestWithURL:url] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+            [weakHUD hide:YES];
+            weakImageView.image = image;
+            weakImageView.frame = CGRectMake(0, 0, weakImageView.image.size.width, weakImageView.image.size.height);
+            weakImageView.center = CGPointMake(weakSelf.view.center.x, weakSelf.view.center.y - 30);
+            [weakSelf.view addSubview:weakImageView];
+            
+            
+        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+            
+        }];
+        
+        
+        NSLog(@"[Display Media] ImageURL: %@", [ASData sharedData].imageURL);
+
+//        _imageView.frame = CGRectMake(0, 0, _imageView.image.size.width, _imageView.image.size.height);
+//        _imageView.center = CGPointMake(self.view.center.x, self.view.center.y - 30);
+
     }
 }
 
