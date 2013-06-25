@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4457.6" systemVersion="13A476u" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="FoN-LE-wA4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4457.9" systemVersion="13A497d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="FoN-LE-wA4">
     <dependencies>
         <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3682.6"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3682.9"/>
     </dependencies>
     <scenes>
         <!--Marker Detection View Controller - Detection-->
@@ -31,6 +31,10 @@
                                 <rect key="frame" x="40" y="132" width="240" height="240"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detection-instruction" id="WHE-3a-vgU">
+                                <rect key="frame" x="85" y="177" width="150" height="150"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -41,6 +45,7 @@
                         <outlet property="detectedOverlay" destination="prr-4B-wP2" id="TJh-8Y-qJ3"/>
                         <outlet property="detectionOverlay" destination="j1m-Z0-GgT" id="CSl-cL-2eF"/>
                         <outlet property="glview" destination="GB3-g5-JQt" id="8wN-Zr-CC6"/>
+                        <outlet property="instructionOverlay" destination="WHE-3a-vgU" id="him-mh-j7w"/>
                         <segue destination="0W8-pu-MzL" kind="modal" identifier="AssignMedia" id="LcC-Uk-QPx"/>
                         <segue destination="g0I-p7-EzH" kind="push" identifier="DisplayMedia" id="96a-GS-wwJ"/>
                     </connections>
@@ -62,7 +67,7 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="Lzs-bi-0vJ">
@@ -73,6 +78,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hrk-cX-mAI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -425,6 +431,7 @@
         <image name="CameraRollIcon" width="32" height="32"/>
         <image name="ImageSearchIcon" width="32" height="32"/>
         <image name="YoutubeIcon" width="32" height="32"/>
+        <image name="detection-instruction" width="176" height="209"/>
         <image name="marker-detected-overlay" width="480" height="480"/>
         <image name="marker-detection-overlay" width="480" height="480"/>
     </resources>

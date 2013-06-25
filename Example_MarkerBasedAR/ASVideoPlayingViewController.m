@@ -27,7 +27,7 @@
     _player.moviePlayer.movieSourceType = MPMovieSourceTypeStreaming;
     _player.delegate = self;
     _player.view.frame = CGRectMake(0.0f, 0.0f, 320.0f, 586.0f);
-    _player.view.center = CGPointMake(self.view.center.x, self.view.center.y - 4);
+    _player.view.center = CGPointMake(self.view.center.x, self.view.center.y - 6);
     [self.view addSubview:_player.view];
     
 }

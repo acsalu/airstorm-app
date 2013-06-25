@@ -27,6 +27,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *detectionOverlay;
 @property (weak, nonatomic) IBOutlet UIImageView *detectedOverlay;
+@property (weak, nonatomic) IBOutlet UIImageView *instructionOverlay;
 
 - (void)detectMarkerWithId:(int)id;
 

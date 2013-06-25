@@ -46,7 +46,7 @@
         _imageView = [[UIImageView alloc] init];
         [_imageView setImageWithURL:[NSURL URLWithString:[ASData sharedData].imageURL]];
         _imageView.frame = CGRectMake(0, 0, _imageView.image.size.width, _imageView.image.size.height);
-        _imageView.center = self.view.center;
+        _imageView.center = CGPointMake(self.view.center.x, self.view.center.y - 30);
         [self.view addSubview:_imageView];
     }
 }

@@ -85,6 +85,7 @@
 {
     self.detectedOverlay.hidden = !isFetching;
     self.detectionOverlay.hidden = isFetching;
+    self.instructionOverlay.hidden = isFetching;
     _isFetching = isFetching;
 }
 
