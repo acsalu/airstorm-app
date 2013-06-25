@@ -95,6 +95,13 @@
     _isFetching = isFetching;
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+//    self.visualizationController = nil;
+//    self.glview = nil;
+    [super viewWillDisappear:YES];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Important notice:

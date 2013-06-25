@@ -22,6 +22,5 @@
 @property (strong, nonatomic) LBYouTubePlayerViewController *player;
 
 - (IBAction)chooseVideo:(id)sender;
-- (IBAction)playVideo:(id)sender;
 
 @end

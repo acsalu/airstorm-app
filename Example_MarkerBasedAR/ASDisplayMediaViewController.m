@@ -52,24 +52,34 @@
     } else {
         
         NSLog(@"[Display Media] ImageURL: %@", [ASData sharedData].imageURL);
-        [HUD show:YES];
-        _imageView = [[UIImageView alloc] init];
+//        [HUD show:YES];
         NSURL *url = [NSURL URLWithString:[ASData sharedData].imageURL];
+//        [_imageView setImageWithURL:url];
+    
+//        [_imageView setImageWithURL:url placeholderImage:[UIImage imageNamed:@"media-display-placeholder"]];
         
-        __weak UIImageView * weakImageView = _imageView;
-        __weak typeof(self) weakSelf = self;
-        __weak MBProgressHUD *weakHUD = HUD;
-        [_imageView setImageWithURLRequest:[NSURLRequest requestWithURL:url] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-            [weakHUD hide:YES];
-            weakImageView.image = image;
-            weakImageView.frame = CGRectMake(0, 0, weakImageView.image.size.width, weakImageView.image.size.height);
-            weakImageView.center = CGPointMake(weakSelf.view.center.x, weakSelf.view.center.y - 30);
-            [weakSelf.view addSubview:weakImageView];
+        [HUD show:YES];
+        [_imageView setImageWithURLRequest:[NSURLRequest requestWithURL:url]
+                          placeholderImage:[UIImage imageNamed:@"media-display-placeholder"]
+                                   success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+                                       _imageView.image = image;
+                                       [HUD hide:YES];
             
-            
-        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
-            
-        }];
+        } failure:nil];
+        
+//        __weak typeof(self) weakSelf = self;
+//        __weak MBProgressHUD *weakHUD = HUD;
+//        [_imageView setImageWithURLRequest:[NSURLRequest requestWithURL:url] placeholderImage:nil success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+//            [weakHUD hide:YES];
+//            _imageView.image = image;
+//            _imageView.frame = CGRectMake(0, 0, _imageView.image.size.width, _imageView.image.size.height);
+//            _imageView.center = CGPointMake(weakSelf.view.center.x, weakSelf.view.center.y - 30);
+////            [weakSelf.view addSubview:weakImageView];
+//            
+//            
+//        } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+//            
+//        }];
         
         
         NSLog(@"[Display Media] ImageURL: %@", [ASData sharedData].imageURL);

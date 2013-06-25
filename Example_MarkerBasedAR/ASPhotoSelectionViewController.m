@@ -71,6 +71,13 @@
     [super viewWillDisappear:animated];
 }
 
+- (void)didReceiveMemoryWarning
+{
+//    self.assets = nil;
+//    self.assetsLibrary = nil;
+    [super didReceiveMemoryWarning];
+}
+
 - (void)cancel
 {
     [self dismissViewControllerAnimated:YES completion:nil];

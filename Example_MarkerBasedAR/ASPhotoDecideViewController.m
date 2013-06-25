@@ -12,6 +12,9 @@
 #import "AFNetworking.h"
 #import <Parse/Parse.h>
 
+#define MAX_IMAGE_WIDTH 300
+#define MAX_IMAGE_HEIGHT 400
+
 @interface ASPhotoDecideViewController ()
 
 @end
@@ -61,7 +64,6 @@
             });
         });
     } else {
-        NSLog(@"%@", _image);
         _imageView.image = _image;
     }
     
@@ -75,7 +77,7 @@
     
 //    [HUD showWhileExecuting:@selector(choosePhoto) onTarget:self withObject:nil animated:YES];
 }
-                                 
+
 - (void)choosePhoto
 {
    
