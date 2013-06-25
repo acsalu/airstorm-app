@@ -36,6 +36,8 @@
     [self.navigationController.view addSubview:HUD];
     HUD.labelText = @"Processing";
     
+    
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated

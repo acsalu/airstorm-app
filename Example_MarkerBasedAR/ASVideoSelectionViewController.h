@@ -10,7 +10,7 @@
 
 @class MBProgressHUD;
 
-@interface ASVideoSelectionViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface ASVideoSelectionViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
     MBProgressHUD *HUD;
 }
 
@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 @property (strong, nonatomic) NSMutableArray *videos;
 @property (strong, nonatomic) UITapGestureRecognizer *tap;

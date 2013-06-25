@@ -130,7 +130,7 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
                                                             
                                                         }
                                                         
-                                                        [_tableView reloadData];
+                                                        [self.tableView reloadData];
                                                         [HUD hide:YES];
                                                         
                                                     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {

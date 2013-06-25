@@ -147,7 +147,7 @@
                     <navigationItem key="navigationItem" title="Youtube Video" id="3jQ-Lc-WF5"/>
                     <connections>
                         <outlet property="searchBar" destination="t9Y-eM-CKz" id="JLG-Zq-SAT"/>
-                        <outlet property="tableView" destination="KJL-fO-H0h" id="mhS-ve-o9A"/>
+                        <outlet property="tableView" destination="KJL-fO-H0h" id="U53-3Q-JXl"/>
                         <segue destination="ICc-fP-sEM" kind="push" identifier="PlayVideo" id="3EO-Uw-hk9"/>
                     </connections>
                 </viewController>
