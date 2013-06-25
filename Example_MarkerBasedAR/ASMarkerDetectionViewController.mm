@@ -21,7 +21,8 @@
 #import "ASData.h"
 #import <Parse/Parse.h>
 
-#define THRESHOLD_DISTANCE 0.3
+#define THRESHOLD_DISTANCE 0.05
+#define THRESHOLD_TIME_INTERVAL 3600
 
 @interface ASMarkerDetectionViewController() <VideoSourceDelegate>
 
@@ -54,6 +55,11 @@
     [self.videoSource startWithDevicePosition:AVCaptureDevicePositionBack];
     
     self.isFetching = NO;
+    
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:HUD];
+    HUD.labelText = @"Loading";
+    HUD.delegate = self;
 }
 
 - (void)viewDidUnload
@@ -109,51 +115,78 @@
     if (!_isFetching) {
         self.isFetching = YES;
         NSLog(@"[Marker Detection] Detect marker with id %d", id);
-        [ASData sharedData].markerId = id;
-        _markerId = id;
-        PFQuery *query = [PFQuery queryWithClassName:@"PlayBack"];
-        
-        // TODO: add more constraints (e.g. location)
-        [query whereKey:@"markerId" equalTo:@(id)];
-        [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-            if (!error) {
-                if (objects.count == 0) [self performSegueWithIdentifier:@"AssignMedia" sender:self];
-                else {
-                    PFGeoPoint *objectLocation = (PFGeoPoint *) objects[0][@"location"];
-                    NSLog(@"[Marker Detection] Distance from object %.2f km",
-                          [objectLocation distanceInKilometersTo:[PFGeoPoint geoPointWithLocation:[ASData sharedData].location]]);
-                    if (!objectLocation ||
-                        [objectLocation distanceInKilometersTo:[PFGeoPoint geoPointWithLocation:[ASData sharedData].location]] > THRESHOLD_DISTANCE) {
-                        [self performSegueWithIdentifier:@"AssignMedia" sender:self];
-                    } else {
-                        NSDictionary *object = objects[0];
-                        NSString *mediaType = object[@"type"];
-                        
-                        NSLog(@"[Marker Detection] Media type: %@", mediaType);
-                        
-                        if ([mediaType isEqualToString:ASMediaTypeVideo]) {
-                            [ASData sharedData].videoId = object[@"videoId"];
-                            
-                        } else if ([mediaType isEqualToString:ASMediaTypeImage]) {
-                            [ASData sharedData].imageURL = object[@"imageURL"];
-                            
-                        } else {
-                            [ASData sharedData].imageURL = ((PFFile *) object[@"photoFile"]).url;
-                        }
-                        
-                        [ASData sharedData].mediaType = mediaType;
-                        
-                        [self performSegueWithIdentifier:@"DisplayMedia" sender:self];
-                    }
-                    
-                }
-            } else {
-                NSLog(@"Error: %@", error);
-            }
-        }];
+        [self fetchingDataForMarkerWithId:id];
     }
 }
 
+- (void)fetchingDataForMarkerWithId:(int)markdrId
+{
+    [HUD show:YES];
+    
+    [ASData sharedData].markerId = markdrId;
+    _markerId = markdrId;
+    PFQuery *query = [PFQuery queryWithClassName:@"PlayBack"];
+    PFGeoPoint *geoPoint = [PFGeoPoint geoPointWithLocation: [ASData sharedData].location];
+    // TODO: add more constraints (e.g. location)
+    [query whereKey:@"markerId" equalTo:@(markdrId)];
+    [query whereKey:@"location" nearGeoPoint:geoPoint withinKilometers:THRESHOLD_DISTANCE];
+    
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    
+    NSDate *thresholdDate = [NSDate dateWithTimeInterval:-THRESHOLD_TIME_INTERVAL sinceDate:[NSDate date]];
+//    NSLog(@"current time: %@", [formatter stringFromDate:[NSDate date]]);
+//    NSLog(@"threshold tiem: %@", [formatter stringFromDate:thresholdDate]);
+    
+    [query whereKey:@"createdAt" greaterThan:thresholdDate];
+    [query orderByDescending:@"createdAt"];
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            
+//            NSLog(@"%d objects found", objects.count);
+//            for (PFObject *object in objects) {
+//                PFGeoPoint *location = (PFGeoPoint *) object[@"location"];
+//                NSLog(@"[%@][%@] distance %f", object.objectId, [formatter stringFromDate:object.createdAt], [location distanceInKilometersTo:[PFGeoPoint geoPointWithLocation:[ASData sharedData].location]]);
+//            }
+            
+            
+            if (objects.count == 0) [self performSegueWithIdentifier:@"AssignMedia" sender:self];
+            else {
+                
+//                NSLog(@"[Marker Detection] Distance from object %.2f km",
+//                      [objectLocation distanceInKilometersTo:[PFGeoPoint geoPointWithLocation:[ASData sharedData].location]]);
+//                if (!objectLocation ||
+//                    [objectLocation distanceInKilometersTo:[PFGeoPoint geoPointWithLocation:[ASData sharedData].location]] > THRESHOLD_DISTANCE) {
+//                    [self performSegueWithIdentifier:@"AssignMedia" sender:self];
+//                } else {
+                NSDictionary *object = objects[0];
+                NSString *mediaType = object[@"type"];
+                
+                NSLog(@"[Marker Detection] Media type: %@", mediaType);
+                
+                if ([mediaType isEqualToString:ASMediaTypeVideo]) {
+                    [ASData sharedData].videoId = object[@"videoId"];
+                    
+                } else {
+                    [ASData sharedData].imageURL = object[@"imageURL"];   
+                }
+                
+                [ASData sharedData].mediaType = mediaType;
+                
+                [self performSegueWithIdentifier:@"DisplayMedia" sender:self];
+//                }
+                
+            }
+            [HUD hide:YES];
+        } else {
+            NSLog(@"Error: %@", error);
+        }
+    }];
+}
+         
+         
 #pragma mark - VideoSourceDelegate
 -(void)frameReady:(BGRAVideoFrame) frame
 {

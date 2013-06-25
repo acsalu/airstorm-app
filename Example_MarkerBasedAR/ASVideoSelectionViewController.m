@@ -40,6 +40,9 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
     [self.view addGestureRecognizer:_tap];
     [_tap setEnabled:NO];
     
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:HUD];
+    HUD.labelText = @"Loading";
 }
 
 - (void)dismissKeyboard
@@ -70,25 +73,6 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
 }
 
 
-# pragma mark - YouTube related methods
-
-- (void)embedYoutube:(NSString *)videoId frame:(CGRect)frame
-{
-    NSString* embedHTML = [NSString stringWithFormat:
-                           @"<html><head>"
-                           "<style type='text/css'>"
-                           "body {"
-                           "background-color: transparent;"
-                           "color: white;"
-                           "}"
-                           "</style>"
-                           "</head><body style='margin:0'>"
-                           "<embed id='yt' src='http://www.youtube.com/embed/%@?autoplay=1' type='application/x-shockwave-flash'"
-                           "width='%0.0f' height='%0.0f'></embed>"
-                           "</body></html>", @"M7lc1UVf-VE", frame.size.width, frame.size.height];
-}
-
-
 # pragma mark - UISearchBarDelegate methods
 
 - (void)searchBarTextDidBeginEditing:(UISearchBar *)searchBar
@@ -113,6 +97,8 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
     
     NSString *query = searchBar.text;
     NSLog(@"[Video Search] Search video for keyword: %@", query);
+    [ASData sharedData].searchKeyword = query;
+    
     _videos = [NSMutableArray arrayWithCapacity:5];
     
     NSString *urlString = [NSString stringWithFormat:YT_API_URL, query, API_KEY];
@@ -145,13 +131,13 @@ NSString *API_KEY = @"AIzaSyBDRlKTk3MQwjCzuY8O3o4VgexjwtXhY9Q";
                                                         }
                                                         
                                                         [_tableView reloadData];
-                                                        [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                        [HUD hide:YES];
                                                         
                                                     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
                                                     }];
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    
+
+    [HUD show:YES];
     [operation start];
     
 }

@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+#import "ASDisplayMediaViewController.h"
 
 extern NSString * const ASMediaTypeVideo;
 extern NSString * const ASMediaTypePhoto;
@@ -21,6 +22,8 @@ extern NSString * const ASMediaTypeImage;
 @property (strong, nonatomic) CLLocation *location;
 @property (strong, nonatomic) NSString *videoId;
 @property (strong, nonatomic) NSString *imageURL;
+@property (strong, nonatomic) NSString *searchKeyword;
+@property (weak, nonatomic) ASDisplayMediaViewController *displayMediaVC;
 
 + (ASData *)sharedData;
 

@@ -12,10 +12,14 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "MBProgressHUD.h"
 #import "EAGLView.h"
 
-@interface ASMarkerDetectionViewController : UIViewController<CLLocationManagerDelegate>
-{
+@protocol MBProgressHUDDelegate;
+@class MBProgressHUD;
+
+@interface ASMarkerDetectionViewController : UIViewController<CLLocationManagerDelegate, MBProgressHUDDelegate> {
+    MBProgressHUD *HUD;
 }
 
 @property (weak, nonatomic) IBOutlet EAGLView *glview;

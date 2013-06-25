@@ -32,7 +32,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="detection-instruction" id="WHE-3a-vgU">
-                                <rect key="frame" x="85" y="177" width="150" height="150"/>
+                                <rect key="frame" x="76" y="168" width="168" height="168"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -431,7 +431,7 @@
         <image name="CameraRollIcon" width="32" height="32"/>
         <image name="ImageSearchIcon" width="32" height="32"/>
         <image name="YoutubeIcon" width="32" height="32"/>
-        <image name="detection-instruction" width="176" height="209"/>
+        <image name="detection-instruction" width="264" height="217"/>
         <image name="marker-detected-overlay" width="480" height="480"/>
         <image name="marker-detection-overlay" width="480" height="480"/>
     </resources>

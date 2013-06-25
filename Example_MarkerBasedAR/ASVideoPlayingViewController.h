@@ -12,8 +12,12 @@
 
 @class  LBYouTubePlayerViewController;
 @protocol LBYouTubePlayerControllerDelegate;
+@protocol MBProgressHUDDelegate;
+@class MBProgressHUD;
 
-@interface ASVideoPlayingViewController : UIViewController <LBYouTubePlayerControllerDelegate>
+@interface ASVideoPlayingViewController : UIViewController <LBYouTubePlayerControllerDelegate, MBProgressHUDDelegate> {
+    MBProgressHUD *HUD;
+}
 
 @property (strong, nonatomic) LBYouTubePlayerViewController *player;
 

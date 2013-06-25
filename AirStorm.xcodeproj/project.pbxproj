@@ -104,7 +104,7 @@
 		8ADAC472150508F7008B5F2A /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		8AFB8A3D1518914A00A42DEE /* CameraCalibration.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = CameraCalibration.hpp; sourceTree = "<group>"; };
 		8AFB8A3F151895C600A42DEE /* CameraCalibration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CameraCalibration.cpp; sourceTree = "<group>"; };
-		8AFB8A411518CA1D00A42DEE /* GeometryTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GeometryTypes.cpp; sourceTree = "<group>"; };
+		8AFB8A411518CA1D00A42DEE /* GeometryTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = GeometryTypes.cpp; path = ../Example_MarkerBasedAR/GeometryTypes.cpp; sourceTree = "<group>"; };
 		9010351A1769691100787E8E /* AirStorm-test-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AirStorm-test-Info.plist"; sourceTree = "<group>"; };
 		9010351B1769691100787E8E /* AirStorm-test-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AirStorm-test-Prefix.pch"; sourceTree = "<group>"; };
 		901A4D5A1768E357008AF9EF /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -302,7 +302,6 @@
 				9060326A17697430005A0E49 /* ASVideoPlayingController.m */,
 				8ADAC43F1504BC61008B5F2A /* Supporting Files */,
 				8A20518F1510A6E300E80270 /* GeometryTypes.hpp */,
-				8AFB8A411518CA1D00A42DEE /* GeometryTypes.cpp */,
 			);
 			name = "airstorm-pod";
 			path = Example_MarkerBasedAR;
@@ -396,6 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				90C9086417787BA80098175C /* LBYouTube.h */,
+				8AFB8A411518CA1D00A42DEE /* GeometryTypes.cpp */,
 				90C9086517787BA80098175C /* LBYouTubeExtractor.h */,
 				90C9086617787BA80098175C /* LBYouTubeExtractor.m */,
 				90C9086717787BA80098175C /* LBYouTubePlayerViewController.h */,

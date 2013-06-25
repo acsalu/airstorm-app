@@ -70,6 +70,7 @@ NSString *const FlickrAPIKey = @"43837ea27d9b418da418f0616b74bdd7";
         ++_page;
     } else {
         NSLog(@"[Image Search] Searching image for keyword: %@", keyword);
+        [ASData sharedData].searchKeyword = keyword;
         _currentKeyword = keyword;
         _page = 1;
         _imageInfos = [NSMutableArray array];

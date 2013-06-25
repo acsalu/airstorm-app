@@ -23,6 +23,8 @@
 {
     [super viewDidLoad];
     
+    
+    
     _player = [[LBYouTubePlayerViewController alloc] initWithYouTubeID:[ASData sharedData].videoId quality:LBYouTubeVideoQualityMedium];
     _player.moviePlayer.movieSourceType = MPMovieSourceTypeStreaming;
     _player.delegate = self;
@@ -30,24 +32,41 @@
     _player.view.center = CGPointMake(self.view.center.x, self.view.center.y - 6);
     [self.view addSubview:_player.view];
     
+    HUD = [[MBProgressHUD alloc] initWithView:self.navigationController.view];
+    [self.navigationController.view addSubview:HUD];
+    HUD.labelText = @"Processing";
+    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    UIBarButtonItem *newBackButton = [[UIBarButtonItem alloc] initWithTitle:[ASData sharedData].searchKeyword style:UIBarButtonItemStylePlain target:nil action:nil];
+    [self.navigationItem setBackBarButtonItem:newBackButton];
+    
+    [super viewDidAppear:animated];
 }
 
 
 - (IBAction)chooseVideo:(id)sender
 {
+    [HUD show:YES];
     PFObject *playBackObject = [PFObject objectWithClassName:@"PlayBack"];
     [playBackObject setObject:@([ASData sharedData].markerId) forKey:@"markerId"];
     [playBackObject setObject:[ASData sharedData].videoId forKey:@"videoId"];
     [playBackObject setObject:[PFGeoPoint geoPointWithLocation:[ASData sharedData].location] forKey:@"location"];
     [playBackObject setObject:ASMediaTypeVideo forKey:@"type"];
     
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     
     [playBackObject saveEventually:^(BOOL succeeded, NSError *error) {
         if (succeeded) {
             NSLog(@"save succeeded");
-            [MBProgressHUD hideHUDForView:self.view animated:YES];
-            [self dismissViewControllerAnimated:YES completion:nil];
+            HUD.mode = MBProgressHUDModeCustomView;
+            HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"checkmark"]];
+            sleep(2);
+
+            [self dismissViewControllerAnimated:YES completion:^{
+                [[ASData sharedData].displayMediaVC.navigationController popViewControllerAnimated:YES];
+            }];
         } else {
             NSLog(@"save failed");
         }

@@ -30,6 +30,8 @@
 {
     [super viewDidLoad];
     
+    [ASData sharedData].displayMediaVC = self;
+    
     self.navigationItem.leftBarButtonItem.title = @"Detection";
     NSString *mediaType = [ASData sharedData].mediaType;
     
@@ -44,10 +46,20 @@
         
     } else {
         _imageView = [[UIImageView alloc] init];
+        NSLog(@"[Display Media] ImageURL: %@", [ASData sharedData].imageURL);
         [_imageView setImageWithURL:[NSURL URLWithString:[ASData sharedData].imageURL]];
         _imageView.frame = CGRectMake(0, 0, _imageView.image.size.width, _imageView.image.size.height);
         _imageView.center = CGPointMake(self.view.center.x, self.view.center.y - 30);
         [self.view addSubview:_imageView];
+    }
+}
+
+#pragma mark - StoryBoard methods
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[ASData sharedData].mediaType isEqualToString:ASMediaTypeVideo]) {
+        [_player.moviePlayer stop];
     }
 }
 

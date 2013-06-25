@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ASPhotoDecideViewController : UIViewController
+@protocol MBProgressHUDDelegate;
+@class MBProgressHUD;
+
+@interface ASPhotoDecideViewController : UIViewController <MBProgressHUDDelegate> {
+    MBProgressHUD *HUD;
+}
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) UIImage *image;

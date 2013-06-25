@@ -8,7 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ASVideoSelectionViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@class MBProgressHUD;
+
+@interface ASVideoSelectionViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
+    MBProgressHUD *HUD;
+}
 
 @property (nonatomic) int markerId;
 @property (nonatomic) double longitude;
